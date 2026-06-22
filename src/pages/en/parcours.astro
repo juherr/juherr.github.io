@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Parcours from '../../components/sections/Parcours.astro';
+import { ui } from '../../i18n/ui';
+const t = ui.en;
+---
+<Base title={`${t.parcours.kicker} — ${t.meta.title}`} description={t.parcours.intro} active="parcours">
+  <Parcours lang="en" />
+</Base>

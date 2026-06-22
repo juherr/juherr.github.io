@@ -1,0 +1,83 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { ui, type Lang } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+interface Props {
+  project: CollectionEntry<'projects'>['data'];
+  lang: Lang;
+}
+const { project, lang } = Astro.props;
+const t = ui[lang];
+
+const backHref = localizePath('projets', lang);
+const backLabel = lang === 'fr' ? 'Tous les projets' : 'All projects';
+
+const blocks = [
+  { label: lang === 'fr' ? 'Contexte' : 'Context', text: project.context },
+  { label: t.labels.role, text: project.role },
+  { label: lang === 'fr' ? 'Réalisation' : 'Delivery', text: project.delivery },
+  { label: t.labels.impact, text: project.impactDetail },
+].filter((b) => Boolean(b.text));
+---
+
+<Base title={`${project.title} — ${ui[lang].meta.title}`} description={project.summary} active="projets">
+  <article>
+    <section class="mx-auto max-w-site border-b border-border px-8 pb-[clamp(32px,4vw,48px)] pt-[clamp(40px,6vw,72px)]">
+      <a href={backHref} class="mb-7 inline-flex items-center gap-2 font-mono text-[13px] text-muted no-underline transition-colors hover:text-accent">
+        ← {backLabel}
+      </a>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-10">
+        <div>
+          <span class="inline-block rounded-md border border-blue-soft bg-blue-soft px-[9px] py-1 font-mono text-[11px] uppercase tracking-[0.06em] text-blue">{project.domain}</span>
+          <h1 class="m-0 mb-4 mt-[18px] font-display text-[clamp(28px,3.6vw,40px)] font-semibold tracking-[-0.02em]">{project.title}</h1>
+          <p class="m-0 mb-6 text-[16px] leading-[1.6] text-muted">{project.summary}</p>
+          <div class="flex flex-wrap gap-[7px]">
+            {project.techs.map((tech) => (
+              <span class="rounded-[7px] border border-border bg-surface-2 px-[10px] py-[5px] font-mono text-[11.5px] text-ink">{tech}</span>
+            ))}
+          </div>
+        </div>
+        {blocks.length > 0 && (
+          <div class="flex flex-col">
+            {blocks.map((bl) => (
+              <div class="border-t border-border py-[18px]">
+                <div class="mb-2 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">{bl.label}</div>
+                <p class="m-0 text-[15px] leading-[1.55] text-ink">{bl.text}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-[760px] px-8 py-[clamp(40px,6vw,64px)]">
+      <div class="case-body">
+        <slot />
+      </div>
+    </section>
+
+    <CtaBanner lang={lang} />
+  </article>
+</Base>
+
+<style is:global>
+  .case-body :is(h2, h3) {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 28px 0 12px;
+  }
+  .case-body h2 { font-size: 24px; }
+  .case-body h3 { font-size: 19px; }
+  .case-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .case-body a { color: var(--blue); }
+</style>

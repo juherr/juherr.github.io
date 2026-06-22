@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui } from '../i18n/ui';
+const t = ui.fr.notFound;
+---
+
+<Base title={`404 — ${ui.fr.meta.title}`} description={t.text}>
+  <section class="mx-auto flex max-w-[640px] flex-col items-center px-8 py-[clamp(56px,9vw,120px)] text-center">
+    <img src="/dead-link.png" alt="" width="220" class="mb-8 h-auto w-[min(220px,60%)] opacity-90" />
+    <div class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-accent">404</div>
+    <h1 class="m-0 mb-4 font-display text-[clamp(28px,4vw,40px)] font-semibold tracking-[-0.02em]">{t.title}</h1>
+    <p class="m-0 mb-8 text-[17px] leading-[1.6] text-muted">{t.text}</p>
+    <a href="/" class="rounded-[9px] bg-accent px-6 py-[14px] text-[15px] font-semibold text-on-accent no-underline">{t.back}</a>
+  </section>
+</Base>

@@ -1,0 +1,54 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { site, mailto } from '../config/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const homeHref = localizePath('', lang);
+const navItems = t.nav.map((n) => ({ label: n.label, href: localizePath(n.route, lang) }));
+---
+
+<footer class="border-t border-border bg-surface">
+  <div class="mx-auto grid max-w-site grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-10 px-8 pb-10 pt-14">
+    <div>
+      <a href={homeHref} class="mb-4 flex items-center gap-[11px] no-underline">
+        <img src="/assets/logo-juherr.png" alt={site.name} width="36" height="36" class="h-9 w-9 rounded-[9px]" />
+        <span class="text-[16px] font-semibold text-ink">Julien&nbsp;Herr</span>
+      </a>
+      <p class="m-0 mb-[10px] max-w-[300px] text-[14px] leading-[1.55] text-muted">{t.footer.tagline}</p>
+      <div class="font-mono text-[12px] text-muted">{t.footer.loc}</div>
+    </div>
+
+    <div>
+      <div class="mb-4 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{t.footer.navTitle}</div>
+      <div class="flex flex-col items-start gap-[11px]">
+        <a href={homeHref} class="text-[14.5px] text-ink no-underline hover:text-accent">{t.footer.home}</a>
+        {navItems.map((item) => (
+          <a href={item.href} class="text-[14.5px] text-ink no-underline hover:text-accent">{item.label}</a>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <div class="mb-4 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{t.footer.connectTitle}</div>
+      <div class="flex flex-col gap-[11px]">
+        <a href={mailto} class="text-[14.5px] text-ink no-underline hover:text-accent">{site.email}</a>
+        <a href={site.social.linkedin} target="_blank" rel="noopener" class="text-[14.5px] text-ink no-underline hover:text-accent">LinkedIn ↗</a>
+        <a href={site.social.github} target="_blank" rel="noopener" class="text-[14.5px] text-ink no-underline hover:text-accent">GitHub ↗</a>
+        <a href={site.cvUrl} target="_blank" rel="noopener" class="text-[14.5px] text-ink no-underline hover:text-accent">{t.footer.cvLabel} ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-border">
+    <div class="mx-auto flex max-w-site flex-wrap justify-between gap-4 px-8 py-[18px] font-mono text-[12px] text-muted">
+      <span>{t.footer.rights}</span>
+      <span>{t.footer.built}</span>
+    </div>
+  </div>
+</footer>

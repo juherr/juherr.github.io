@@ -1,0 +1,101 @@
+---
+import { ui, type Lang } from '../../i18n/ui';
+import { site, mailto } from '../../config/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = t.contact;
+const inputClass =
+  'font-sans text-[15px] text-ink bg-bg border border-border rounded-[9px] px-[14px] py-3 outline-none focus-visible:border-blue';
+---
+
+<section class="mx-auto max-w-site px-8 py-[clamp(48px,6vw,80px)]">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-start gap-12">
+    <!-- Left column -->
+    <div>
+      <div class="mb-[18px] font-mono text-[12px] uppercase tracking-[0.14em] text-accent">{c.kicker}</div>
+      <h1 class="m-0 mb-[22px] font-display text-[clamp(32px,4.4vw,48px)] font-semibold leading-[1.06] tracking-[-0.02em]">{c.title}</h1>
+      <p class="m-0 mb-8 max-w-[440px] text-[17px] leading-[1.6] text-muted">{c.intro}</p>
+
+      <div class="mb-[14px] font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{c.subjectsTitle}</div>
+      <div class="mb-[34px] flex flex-wrap gap-2">
+        {c.subjects.map((s) => (
+          <span class="rounded-[7px] border border-border bg-surface-2 px-[11px] py-[6px] font-mono text-[12px] text-ink">{s}</span>
+        ))}
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <a href={mailto} class="text-[16px] font-semibold text-accent no-underline">{site.email} →</a>
+        <a href={site.social.linkedin} target="_blank" rel="noopener" class="text-[15px] font-semibold text-blue no-underline">LinkedIn ↗</a>
+        <a href={site.social.github} target="_blank" rel="noopener" class="text-[15px] font-semibold text-blue no-underline">GitHub ↗</a>
+        <a href={site.cvUrl} target="_blank" rel="noopener" class="text-[15px] font-semibold text-blue no-underline">{c.cvLabel} ↗</a>
+      </div>
+    </div>
+
+    <!-- Right column: form card -->
+    <div class="rounded-[16px] border border-border bg-surface p-[clamp(24px,3vw,34px)]">
+      <!-- Success state (hidden until submit) -->
+      <div data-contact-success hidden class="px-[10px] py-10 text-center">
+        <div class="mx-auto mb-[18px] flex h-12 w-12 items-center justify-center rounded-full bg-accent-soft">
+          <span class="text-[24px] font-bold text-accent">✓</span>
+        </div>
+        <h3 class="m-0 mb-2 font-display text-[21px] font-semibold">{c.sentTitle}</h3>
+        <p class="m-0 text-[15px] text-muted">{c.sentText}</p>
+      </div>
+
+      <form data-contact-form data-email={site.email} class="flex flex-col gap-[18px]">
+        <label class="flex flex-col gap-[7px]">
+          <span class="text-[13.5px] font-medium text-ink">{c.fName}</span>
+          <input name="name" type="text" required placeholder={c.phName} class={inputClass} />
+        </label>
+        <label class="flex flex-col gap-[7px]">
+          <span class="text-[13.5px] font-medium text-ink">{c.fEmail}</span>
+          <input name="email" type="email" required placeholder={c.phEmail} class={inputClass} />
+        </label>
+        <label class="flex flex-col gap-[7px]">
+          <span class="text-[13.5px] font-medium text-ink">{c.fSubject}</span>
+          <select name="subject" required class={inputClass}>
+            {c.subjects.map((s) => <option>{s}</option>)}
+          </select>
+        </label>
+        <label class="flex flex-col gap-[7px]">
+          <span class="text-[13.5px] font-medium text-ink">{c.fMessage}</span>
+          <textarea name="message" rows="5" required placeholder={c.phMessage} class={`${inputClass} resize-y`}></textarea>
+        </label>
+        <button type="submit" class="cursor-pointer rounded-[9px] border-0 bg-accent px-[22px] py-[14px] text-[15px] font-semibold text-on-accent">{c.send}</button>
+        <p class="m-0 font-mono text-[12px] text-muted">{c.formNote}</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const success = document.querySelector<HTMLElement>('[data-contact-success]');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const name = String(data.get('name') ?? '');
+      const email = String(data.get('email') ?? '');
+      const subject = String(data.get('subject') ?? '');
+      const message = String(data.get('message') ?? '');
+      const to = form.dataset.email ?? '';
+
+      const body = `${message}\n\n— ${name} (${email})`;
+      const href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = href;
+
+      if (success) {
+        form.hidden = true;
+        success.removeAttribute('hidden');
+      }
+    });
+  }
+</script>

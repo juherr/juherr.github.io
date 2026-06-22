@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import Projets from '../components/sections/Projets.astro';
+import { ui } from '../i18n/ui';
+const t = ui.fr;
+---
+<Base title={`${t.projets.kicker} — ${t.meta.title}`} description={t.projets.intro} active="projets">
+  <Projets lang="fr" />
+</Base>

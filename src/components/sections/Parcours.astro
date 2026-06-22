@@ -1,0 +1,44 @@
+---
+import { ui, type Lang } from '../../i18n/ui';
+import { getExperience } from '../../lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = t.parcours;
+
+const experience = await getExperience(lang);
+---
+
+<section class="mx-auto max-w-site border-b border-border px-8 pb-6 pt-[clamp(48px,6vw,80px)]">
+  <div class="mb-[18px] font-mono text-[12px] uppercase tracking-[0.14em] text-accent">{p.kicker}</div>
+  <h1 class="m-0 mb-[22px] max-w-[760px] font-display text-[clamp(34px,4.6vw,52px)] font-semibold leading-[1.06] tracking-[-0.02em]">{p.title}</h1>
+  <p class="m-0 max-w-[660px] text-[clamp(16px,1.6vw,19px)] leading-[1.6] text-muted">{p.intro}</p>
+</section>
+
+<section class="mx-auto max-w-[980px] px-8 pb-[72px] pt-6">
+  {experience.map((x) => (
+    <div class="grid grid-cols-[minmax(110px,160px)_1fr] gap-8 border-t border-border py-[34px] max-[640px]:grid-cols-1 max-[640px]:gap-3">
+      <div>
+        <div class="font-mono text-[13px] font-medium text-accent">{x.data.period}</div>
+        <div class="mt-[6px] font-mono text-[12px] text-muted">{x.data.domains}</div>
+      </div>
+      <div>
+        <h2 class="m-0 mb-2 font-display text-[21px] font-semibold tracking-[-0.01em]">{x.data.role}</h2>
+        <p class="m-0 mb-4 text-[15px] leading-[1.6] text-muted">{x.data.context}</p>
+        <ul class="m-0 mb-[14px] flex list-none flex-col gap-2 p-0">
+          {x.data.missions.map((mi) => (
+            <li class="flex gap-[11px] text-[14.5px] leading-[1.5] text-ink">
+              <span class="text-accent">→</span><span>{mi}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="inline-block rounded-lg border border-border bg-surface-2 px-[14px] py-[11px] text-[14px] text-ink">
+          <span class="font-mono text-[11px] uppercase tracking-[0.06em] text-accent">{t.labels.impact} · </span>{x.data.impact}
+        </div>
+      </div>
+    </div>
+  ))}
+</section>

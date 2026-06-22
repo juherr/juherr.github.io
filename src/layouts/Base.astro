@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ui, type Lang } from '../i18n/ui';
+import { getLangFromUrl, alternatePath } from '../i18n/utils';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Active page route key, used to highlight the nav tab. */
+  active?: string;
+}
+
+const lang: Lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
+const { title, description, active } = Astro.props;
+
+const pageTitle = title ?? t.meta.title;
+const pageDescription = description ?? t.meta.description;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const frHref = new URL(alternatePath(Astro.url, 'fr'), Astro.site).href;
+const enHref = new URL(alternatePath(Astro.url, 'en'), Astro.site).href;
+const ogImage = new URL('/assets/logo-juherr.png', Astro.site).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/assets/logo-juherr.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={frHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={frHref} />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Apply the theme before first paint to avoid a flash -->
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        const theme =
+          stored ??
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      })();
+    </script>
+  </head>
+  <body class="bg-bg text-ink font-sans antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent"
+    >
+      {lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}
+    </a>
+    <Header lang={lang} active={active} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

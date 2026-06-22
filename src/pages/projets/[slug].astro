@@ -1,0 +1,19 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CaseStudy from '../../layouts/CaseStudy.astro';
+import { getProjects, cleanSlug, isExternal } from '../../lib/content';
+
+export const getStaticPaths = (async () => {
+  const projects = await getProjects('fr');
+  return projects
+    .filter((p) => !isExternal(p))
+    .map((p) => ({ params: { slug: cleanSlug(p.slug) }, props: { entry: p } }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<CaseStudy project={entry.data} lang="fr">
+  <Content />
+</CaseStudy>
