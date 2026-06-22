@@ -1,0 +1,90 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+import { site } from '../config/site';
+import ThemeToggle from './ThemeToggle.astro';
+import LangSwitch from './LangSwitch.astro';
+import MobileMenu from './MobileMenu.astro';
+
+interface Props {
+  lang: Lang;
+  active?: string;
+}
+const { lang, active } = Astro.props;
+const t = ui[lang];
+
+const navItems = t.nav.map((n) => ({
+  label: n.label,
+  href: localizePath(n.route, lang),
+  route: n.route,
+}));
+const homeHref = localizePath('', lang);
+const contactHref = localizePath('contact', lang);
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-border bg-surface/90 backdrop-blur supports-[backdrop-filter]:bg-surface/80"
+>
+  <div class="mx-auto flex max-w-site items-center justify-between gap-5 px-8 py-[14px]">
+    <a href={homeHref} class="flex shrink-0 items-center gap-[11px] no-underline">
+      <img
+        src="/assets/logo-juherr.png"
+        alt={site.name}
+        width="38"
+        height="38"
+        class="block h-[38px] w-[38px] rounded-[9px]"
+      />
+      <span class="text-[16px] font-semibold tracking-[-0.01em] text-ink">Julien&nbsp;Herr</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-[22px] lg:flex" aria-label={t.footer.navTitle}>
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'whitespace-nowrap text-[14.5px] font-medium no-underline transition-colors hover:text-ink',
+              active === item.route ? 'text-accent' : 'text-muted',
+            ]}
+            aria-current={active === item.route ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Desktop controls -->
+    <div class="hidden items-center gap-[14px] lg:flex">
+      <LangSwitch lang={lang} />
+      <ThemeToggle lang={lang} />
+      <a
+        href={contactHref}
+        class="whitespace-nowrap rounded-lg bg-accent px-[17px] py-[10px] text-[13.5px] font-semibold text-on-accent no-underline"
+      >
+        {t.cta}
+      </a>
+    </div>
+
+    <!-- Mobile controls -->
+    <div class="flex items-center gap-[10px] lg:hidden">
+      <LangSwitch lang={lang} />
+      <ThemeToggle lang={lang} />
+      <button
+        type="button"
+        data-menu-button
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label={t.menuOpen}
+        class="flex h-[38px] w-[38px] items-center justify-center rounded-lg border border-border text-ink"
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <MobileMenu lang={lang} active={active} />
+</header>

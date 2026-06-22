@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Contact from '../../components/sections/Contact.astro';
+import { ui } from '../../i18n/ui';
+const t = ui.en;
+---
+<Base title={`${t.contact.kicker} — ${t.meta.title}`} description={t.contact.intro} active="contact">
+  <Contact lang="en" />
+</Base>

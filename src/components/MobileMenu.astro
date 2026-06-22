@@ -1,0 +1,74 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  active?: string;
+}
+const { lang, active } = Astro.props;
+const t = ui[lang];
+
+const navItems = t.nav.map((n) => ({
+  label: n.label,
+  href: localizePath(n.route, lang),
+  route: n.route,
+}));
+const contactHref = localizePath('contact', lang);
+---
+
+<div
+  id="mobile-menu"
+  data-menu-panel
+  hidden
+  class="border-t border-border bg-surface lg:hidden"
+>
+  <nav class="mx-auto flex max-w-site flex-col gap-1 px-8 py-4" aria-label={t.footer.navTitle}>
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'rounded-lg px-3 py-3 text-[15px] font-medium no-underline transition-colors',
+            active === item.route ? 'bg-accent-soft text-accent' : 'text-ink hover:bg-surface-2',
+          ]}
+          aria-current={active === item.route ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a
+      href={contactHref}
+      class="mt-2 rounded-lg bg-accent px-4 py-3 text-center text-[15px] font-semibold text-on-accent no-underline"
+    >
+      {t.cta}
+    </a>
+  </nav>
+</div>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+
+  if (btn && panel) {
+    btn.addEventListener('click', () => {
+      const open = panel.hasAttribute('hidden');
+      if (open) {
+        panel.removeAttribute('hidden');
+      } else {
+        panel.setAttribute('hidden', '');
+      }
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Close on Escape and restore focus to the toggle.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hasAttribute('hidden')) {
+        panel.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  }
+</script>

@@ -1,0 +1,23 @@
+---
+import { type Lang } from '../i18n/ui';
+import { alternatePath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const frHref = alternatePath(Astro.url, 'fr');
+const enHref = alternatePath(Astro.url, 'en');
+
+const base = 'px-3 py-[7px] font-medium transition-colors';
+const active = `${base} bg-accent text-on-accent`;
+const idle = `${base} text-muted hover:text-ink`;
+---
+
+<div
+  class="flex items-center overflow-hidden rounded-lg border border-border font-mono text-[12px]"
+>
+  <a href={frHref} hreflang="fr" class={lang === 'fr' ? active : idle} aria-current={lang === 'fr' ? 'true' : undefined}>FR</a>
+  <a href={enHref} hreflang="en" class={lang === 'en' ? active : idle} aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+</div>

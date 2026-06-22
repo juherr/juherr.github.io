@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Apropos from '../../components/sections/Apropos.astro';
+import { ui } from '../../i18n/ui';
+const t = ui.en;
+---
+<Base title={`${t.apropos.kicker} — ${t.meta.title}`} description={t.apropos.quote} active="a-propos">
+  <Apropos lang="en" />
+</Base>

@@ -1,0 +1,70 @@
+---
+import { ui, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const e = ui[lang].expertise;
+const techLabel = lang === 'fr' ? 'Transverse' : 'Cross-cutting';
+const propLabel = lang === 'fr' ? 'propriétaire' : 'proprietary';
+---
+
+<section class="mx-auto max-w-site border-b border-border px-8 pb-6 pt-[clamp(48px,6vw,80px)]">
+  <div class="mb-[18px] font-mono text-[12px] uppercase tracking-[0.14em] text-accent">{e.kicker}</div>
+  <h1 class="m-0 mb-[22px] max-w-[760px] font-display text-[clamp(34px,4.6vw,52px)] font-semibold leading-[1.06] tracking-[-0.02em]">{e.title}</h1>
+  <p class="m-0 max-w-[660px] text-[clamp(16px,1.6vw,19px)] leading-[1.6] text-muted [text-wrap:pretty]">{e.intro}</p>
+</section>
+
+<section class="mx-auto max-w-site px-8 pb-16 pt-2">
+  {e.axes.map((ax) => (
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 border-b border-border py-10">
+      <div>
+        <div class="mb-[14px] font-mono text-[13px] font-semibold text-accent">{ax.num}</div>
+        <h2 class="m-0 mb-[14px] font-display text-[clamp(22px,2.6vw,28px)] font-semibold tracking-[-0.015em]">{ax.title}</h2>
+        <p class="m-0 max-w-[380px] text-[15px] leading-[1.6] text-muted">{ax.text}</p>
+      </div>
+      <div class="flex flex-col gap-5">
+        {ax.groups.map((g) => (
+          <div>
+            <div class="mb-[10px] font-mono text-[11px] uppercase tracking-[0.12em] text-muted">{g.label}</div>
+            <div class="flex flex-wrap gap-2">
+              {g.proofs.map((p) =>
+                p.href ? (
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-[6px] rounded-[7px] border border-blue-soft bg-blue-soft px-3 py-[7px] font-mono text-[12.5px] text-blue no-underline transition-colors hover:border-blue"
+                  >
+                    {p.name}<span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <span class="inline-flex items-center gap-[7px] rounded-[7px] border border-border bg-surface-2 px-3 py-[7px] font-mono text-[12.5px] text-ink">
+                    {p.name}
+                    {p.prop && (
+                      <span class="rounded-[4px] bg-border px-[5px] py-[1px] text-[10px] uppercase tracking-[0.06em] text-muted">{propLabel}</span>
+                    )}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 border-b border-border py-10">
+    <div>
+      <div class="mb-[14px] font-mono text-[13px] font-semibold uppercase tracking-[0.06em] text-blue">{techLabel}</div>
+      <h2 class="m-0 mb-[14px] font-display text-[clamp(22px,2.6vw,28px)] font-semibold tracking-[-0.015em]">{e.techTitle}</h2>
+      <p class="m-0 max-w-[380px] text-[15px] leading-[1.6] text-muted">{e.techText}</p>
+    </div>
+    <div class="flex flex-wrap content-start gap-2">
+      {e.tech.map((cap) => (
+        <span class="rounded-[7px] border border-border bg-surface-2 px-3 py-[7px] font-mono text-[12.5px] text-ink">{cap}</span>
+      ))}
+    </div>
+  </div>
+  <p class="m-0 mt-7 font-mono text-[13px] text-muted">{e.note}</p>
+</section>

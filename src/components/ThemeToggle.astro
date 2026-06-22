@@ -1,0 +1,51 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  data-label-to-dark={t.themeLabelToDark}
+  data-label-to-light={t.themeLabelToLight}
+  aria-label={t.themeAria}
+  class="flex items-center gap-2 rounded-lg border border-border bg-transparent px-[11px] py-[7px] font-mono text-[12px] text-muted transition-colors hover:text-ink"
+>
+  <span
+    aria-hidden="true"
+    class="inline-block h-[14px] w-[14px] rounded-full border-[1.5px] border-ink"
+    style="background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);"
+  ></span>
+  <span data-theme-label>{t.themeLabelToDark}</span>
+</button>
+
+<script>
+  function syncLabels() {
+    const isDark = document.documentElement.classList.contains('dark');
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+      const label = btn.querySelector<HTMLElement>('[data-theme-label]');
+      if (label) {
+        label.textContent = isDark
+          ? btn.dataset.labelToLight ?? 'Light'
+          : btn.dataset.labelToDark ?? 'Dark';
+      }
+    });
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    syncLabels();
+  }
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', toggleTheme);
+  });
+
+  syncLabels();
+</script>

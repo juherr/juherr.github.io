@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import { ui, type Lang } from '../../i18n/ui';
+import portrait from '../../assets/julien.png';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const a = ui[lang].apropos;
+---
+
+<section class="mx-auto max-w-site px-8 py-[clamp(48px,6vw,80px)]">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] items-start gap-12">
+    <div>
+      <div class="mb-[18px] font-mono text-[12px] uppercase tracking-[0.14em] text-accent">{a.kicker}</div>
+      <h1 class="m-0 mb-6 font-display text-[clamp(30px,4vw,44px)] font-semibold leading-[1.08] tracking-[-0.02em]">{a.title}</h1>
+      {a.paras.map((para) => (
+        <p class="m-0 mb-[18px] text-[16.5px] leading-[1.65] text-muted [text-wrap:pretty]">{para}</p>
+      ))}
+      <blockquote class="m-0 mt-7 border-l-[3px] border-accent py-[6px] pl-[22px]">
+        <p class="m-0 font-display text-[clamp(19px,2.2vw,23px)] font-medium leading-[1.4] tracking-[-0.01em] text-ink">{a.quote}</p>
+      </blockquote>
+    </div>
+    <div>
+      <div class="relative overflow-hidden rounded-[16px] border border-border bg-[#0c1622] shadow-[0_24px_60px_-34px_rgba(14,27,42,.5)]">
+        <Image src={portrait} alt="Julien Herr" width={640} height={640} class="block aspect-square w-full object-cover" />
+        <div class="absolute bottom-4 left-4 whitespace-nowrap rounded-[7px] border border-white/15 bg-[rgba(12,22,34,.6)] px-[11px] py-[6px] font-mono text-[11px] tracking-[0.06em] text-[#e8eef5] backdrop-blur-sm">{a.photoTag}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="border-t border-border bg-surface">
+  <div class="mx-auto max-w-site px-8 py-[clamp(48px,6vw,72px)]">
+    <h2 class="m-0 mb-8 font-display text-[clamp(22px,2.6vw,28px)] font-semibold tracking-[-0.015em]">{a.valuesTitle}</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5">
+      {a.values.map((v) => (
+        <div class="rounded-[13px] border border-border bg-bg p-6">
+          <div class="mb-[10px] flex items-center gap-[10px]">
+            <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+            <h3 class="m-0 font-display text-[17px] font-semibold">{v.title}</h3>
+          </div>
+          <p class="m-0 text-[14px] leading-[1.55] text-muted">{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

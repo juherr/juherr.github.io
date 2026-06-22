@@ -1,0 +1,177 @@
+---
+import { ui, type Lang } from '../../i18n/ui';
+import { localizePath } from '../../i18n/utils';
+import { site } from '../../config/site';
+import { getFeaturedProjects, getExperience, projectHref, isExternal } from '../../lib/content';
+import NodeGraph from '../NodeGraph.astro';
+import CtaBanner from '../CtaBanner.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const h = t.home;
+
+const featured = await getFeaturedProjects(lang);
+const experience = await getExperience(lang);
+
+const contactHref = localizePath('contact', lang);
+const projetsHref = localizePath('projets', lang);
+const parcoursHref = localizePath('parcours', lang);
+const visitLabel = lang === 'fr' ? 'Voir le projet' : 'Visit the project';
+
+const kicker = 'font-mono text-[12px] uppercase tracking-[0.14em] text-accent';
+const sectionTitle = 'font-display text-[clamp(26px,3.2vw,34px)] font-semibold tracking-[-0.015em]';
+const chip = 'rounded-md border border-border bg-surface-2 px-[9px] py-1 font-mono text-[11px] text-ink';
+---
+
+<!-- HERO -->
+<section class="mx-auto grid max-w-site grid-cols-[repeat(auto-fit,minmax(320px,1fr))] items-center gap-12 px-8 py-[clamp(56px,8vw,96px)]">
+  <div>
+    <div class="mb-[22px] font-mono text-[13px] uppercase tracking-[0.12em] text-blue">{h.hero.kicker}</div>
+    <h1 class="m-0 mb-6 font-display text-[clamp(36px,5.2vw,56px)] font-semibold leading-[1.04] tracking-[-0.025em]">{h.hero.title}</h1>
+    <p class="m-0 mb-8 max-w-[500px] text-[clamp(17px,1.6vw,19px)] leading-[1.55] text-muted [text-wrap:pretty]">{h.hero.promise}</p>
+    <div class="mb-[30px] flex flex-wrap gap-[14px]">
+      <a href={contactHref} class="rounded-[9px] bg-accent px-6 py-[14px] text-[15px] font-semibold text-on-accent no-underline">{h.hero.ctaPrimary}</a>
+      <a href="#projets" class="rounded-[9px] border border-border bg-surface px-6 py-[14px] text-[15px] font-semibold text-ink no-underline">{h.hero.ctaSecondary}</a>
+      <a href={site.cvUrl} target="_blank" rel="noopener" class="self-center border-b border-transparent text-[15px] font-semibold text-blue no-underline hover:border-blue">{h.hero.ctaTertiary} →</a>
+    </div>
+    <div class="font-mono text-[12.5px] leading-[1.8] text-muted">{h.hero.credibility}</div>
+  </div>
+  <div>
+    <NodeGraph center={h.hero.graphCenter} />
+  </div>
+</section>
+
+<!-- POSITIONNEMENT -->
+<section class="border-y border-border bg-surface">
+  <div class="mx-auto max-w-[980px] px-8 py-[clamp(56px,7vw,88px)] text-center">
+    <div class="mb-[26px] font-mono text-[12px] uppercase tracking-[0.14em] text-accent">{h.pos.kicker}</div>
+    <p class="m-0 mb-7 font-display text-[clamp(24px,3.2vw,34px)] font-medium leading-[1.32] tracking-[-0.015em] [text-wrap:balance]">{h.pos.text}</p>
+    <p class="mx-auto m-0 max-w-[620px] text-[clamp(15px,1.5vw,17px)] leading-[1.6] text-muted">{h.pos.sub}</p>
+  </div>
+</section>
+
+<!-- PROBLÈMES RÉSOLUS -->
+<section class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+  <div class={`mb-3 ${kicker}`}>{h.prob.kicker}</div>
+  <h2 class={`m-0 mb-10 ${sectionTitle}`}>{h.prob.title}</h2>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5">
+    {h.prob.items.map((p) => (
+      <div class="rounded-[14px] border border-border bg-surface p-[26px]">
+        <div class="mb-[18px] font-display text-[32px] font-semibold leading-none text-accent">{p.n}</div>
+        <h3 class="m-0 mb-[10px] font-display text-[18px] font-semibold leading-[1.25]">{p.title}</h3>
+        <p class="m-0 text-[14px] leading-[1.55] text-muted">{p.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- EXPERTISES -->
+<section id="expertise" class="border-t border-border bg-surface">
+  <div class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+    <div class={`mb-3 ${kicker}`}>{h.exp.kicker}</div>
+    <h2 class={`m-0 mb-10 ${sectionTitle}`}>{h.exp.title}</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-5">
+      {h.exp.items.map((e) => (
+        <div class="flex flex-col rounded-[14px] border border-border bg-bg p-[26px]">
+          <div class="mb-[18px] flex h-[42px] w-[42px] items-center justify-center rounded-[11px] bg-accent-soft">
+            <div class="h-[14px] w-[14px] rotate-45 rounded-[4px] border-[2.5px] border-accent"></div>
+          </div>
+          <h3 class="m-0 mb-[10px] font-display text-[19px] font-semibold">{e.title}</h3>
+          <p class="m-0 mb-[18px] flex-1 text-[14px] leading-[1.55] text-muted">{e.text}</p>
+          <div class="flex flex-wrap gap-[6px]">
+            {e.tags.map((tag) => <span class={chip}>{tag}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+      <span class="font-mono text-[12px] uppercase tracking-[0.14em] text-muted">{h.exp.techTitle}</span>
+      {h.exp.techs.map((tech) => <span class={chip}>{tech}</span>)}
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets" class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+  <div class="mb-10 flex flex-wrap items-end justify-between gap-6">
+    <div>
+      <div class={`mb-3 ${kicker}`}>{h.proj.kicker}</div>
+      <h2 class={`m-0 ${sectionTitle}`}>{h.proj.title}</h2>
+    </div>
+    <a href={projetsHref} class="border-b border-blue pb-[2px] text-[15px] font-semibold text-blue no-underline">{h.proj.link} →</a>
+  </div>
+  <div class="flex flex-col gap-[18px]">
+    {featured.map((pr) => {
+      const ext = isExternal(pr);
+      return (
+        <a
+          href={projectHref(pr, lang)}
+          target={ext ? '_blank' : undefined}
+          rel={ext ? 'noopener' : undefined}
+          class="block rounded-[14px] border border-border bg-surface p-[28px_30px] text-inherit no-underline transition-colors hover:border-blue"
+        >
+          <div class="max-w-[760px]">
+            <div class="mb-[14px] flex flex-wrap items-center gap-[10px]">
+              <span class="rounded-md border border-blue-soft bg-blue-soft px-[9px] py-1 font-mono text-[11px] uppercase tracking-[0.06em] text-blue">{pr.data.domain}</span>
+            </div>
+            <h3 class="m-0 mb-[10px] font-display text-[clamp(20px,2.4vw,24px)] font-semibold tracking-[-0.01em]">{pr.data.title}</h3>
+            <p class="m-0 mb-[18px] text-[15px] leading-[1.55] text-muted">{pr.data.summary}</p>
+            <div class="flex flex-wrap items-center gap-[18px]">
+              <div class="flex flex-wrap gap-[7px]">
+                {pr.data.techs.slice(0, 3).map((tg) => <span class={chip}>{tg}</span>)}
+              </div>
+              <span class="ml-auto text-[14.5px] font-semibold text-blue">{ext ? visitLabel : t.projets.caseStudyCta} →</span>
+            </div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</section>
+
+<!-- MODES D'INTERVENTION -->
+<section class="border-t border-border bg-surface">
+  <div class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+    <div class={`mb-3 ${kicker}`}>{h.modes.kicker}</div>
+    <h2 class={`m-0 mb-10 ${sectionTitle}`}>{h.modes.title}</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(255px,1fr))] gap-5">
+      {h.modes.items.map((m) => (
+        <div class="rounded-[14px] border border-border bg-bg p-[26px]">
+          <div class="mb-[14px] flex items-center gap-[10px]">
+            <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+            <h3 class="m-0 font-display text-[18px] font-semibold leading-[1.25]">{m.title}</h3>
+          </div>
+          <p class="m-0 text-[14px] leading-[1.55] text-muted">{m.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section id="parcours" class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+  <div class="mb-10 flex flex-wrap items-end justify-between gap-6">
+    <div>
+      <div class={`mb-3 ${kicker}`}>{h.path.kicker}</div>
+      <h2 class={`m-0 max-w-[560px] ${sectionTitle}`}>{h.path.title}</h2>
+    </div>
+    <a href={parcoursHref} class="border-b border-blue pb-[2px] text-[15px] font-semibold text-blue no-underline">{h.path.link} →</a>
+  </div>
+  <div class="flex flex-col">
+    {experience.map((x) => (
+      <div class="grid grid-cols-[minmax(120px,180px)_1fr] gap-7 border-t border-border py-6 max-[640px]:grid-cols-1 max-[640px]:gap-2">
+        <div class="pt-[3px] font-mono text-[13px] text-muted">{x.data.period}</div>
+        <div>
+          <h3 class="m-0 mb-[6px] font-display text-[19px] font-semibold">{x.data.role}</h3>
+          <p class="m-0 max-w-[640px] text-[15px] leading-[1.55] text-muted">{x.data.context}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<CtaBanner lang={lang} />

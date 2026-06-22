@@ -1,0 +1,85 @@
+/* ===== Design tokens — single source of truth ===== */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f1f4f7;
+  --ink: #0e1b2a;
+  --muted: #5b6b7d;
+  --border: #e3e8ee;
+  --accent: #ee5d24;
+  --on-accent: #ffffff;
+  --accent-soft: #fdeee7;
+  --blue: #1d63d1;
+  --blue-soft: #eaf1fb;
+  --node: #1d63d1;
+  --line: #c2ccd8;
+}
+
+.dark {
+  --bg: #0c1622;
+  --surface: #13212f;
+  --surface-2: #1a2a39;
+  --ink: #e8eef5;
+  --muted: #93a4b6;
+  --border: #22323f;
+  --accent: #ff7a45;
+  --on-accent: #0c1622;
+  --accent-soft: #2a1b12;
+  --blue: #5a93ff;
+  --blue-soft: #15273c;
+  --node: #5a93ff;
+  --line: #2a3d4f;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+a {
+  color: inherit;
+}
+
+/* ===== Accessibility ===== */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--blue);
+  border-radius: 6px;
+}
+
+/* ===== Hero node-graph flow animation ===== */
+@keyframes acflow {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

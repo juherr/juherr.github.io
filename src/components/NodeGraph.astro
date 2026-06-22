@@ -1,0 +1,56 @@
+---
+interface Props {
+  /** Localized label for the central node. */
+  center: string;
+}
+const { center } = Astro.props;
+---
+
+<svg viewBox="0 0 460 384" width="100%" class="mx-auto block max-w-[520px]" role="img" aria-label="Systèmes interconnectés">
+  <g style="stroke:var(--line);" fill="none" stroke-width="1.5">
+    <path
+      d="M110 92 L230 60 M110 92 L92 202 M230 60 L360 112 M92 202 L210 202 M210 202 L360 112 M210 202 L162 312 M360 112 L382 242 M162 312 L300 322 M382 242 L300 322 M210 202 L382 242"
+    ></path>
+  </g>
+  <path
+    d="M110 92 L230 60 L360 112 L382 242 L300 322"
+    fill="none"
+    stroke-width="2"
+    stroke-dasharray="5 7"
+    style="stroke:var(--accent);animation:acflow 4.5s linear infinite;"
+  ></path>
+  <g font-family="'IBM Plex Mono',monospace" font-size="10.5" style="fill:var(--muted);">
+    <g>
+      <circle cx="110" cy="92" r="7" style="fill:var(--surface);stroke:var(--node);" stroke-width="2"></circle>
+      <text x="110" y="75" text-anchor="middle">CPO</text>
+    </g>
+    <g>
+      <circle cx="230" cy="60" r="7" style="fill:var(--surface);stroke:var(--node);" stroke-width="2"></circle>
+      <text x="230" y="44" text-anchor="middle">OCPP</text>
+    </g>
+    <g>
+      <circle cx="360" cy="112" r="7" style="fill:var(--accent);stroke:var(--accent);" stroke-width="2"></circle>
+      <text x="372" y="106" style="fill:var(--ink);">Roaming</text>
+    </g>
+    <g>
+      <circle cx="92" cy="202" r="7" style="fill:var(--surface);stroke:var(--node);" stroke-width="2"></circle>
+      <text x="78" y="206" text-anchor="end">Supervision</text>
+    </g>
+    <g>
+      <circle cx="210" cy="202" r="10" style="fill:var(--ink);"></circle>
+      <text x="210" y="234" text-anchor="middle" style="fill:var(--ink);" font-weight="600">{center}</text>
+    </g>
+    <g>
+      <circle cx="382" cy="242" r="7" style="fill:var(--surface);stroke:var(--node);" stroke-width="2"></circle>
+      <text x="394" y="246">Billing</text>
+    </g>
+    <g>
+      <circle cx="162" cy="312" r="7" style="fill:var(--surface);stroke:var(--node);" stroke-width="2"></circle>
+      <text x="162" y="336" text-anchor="middle">Smart charging</text>
+    </g>
+    <g>
+      <circle cx="300" cy="322" r="7" style="fill:var(--surface);stroke:var(--node);" stroke-width="2"></circle>
+      <text x="300" y="346" text-anchor="middle">SI / ERP</text>
+    </g>
+  </g>
+</svg>

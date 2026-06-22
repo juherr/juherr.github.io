@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Expertise from '../components/sections/Expertise.astro';
+import CommunityOSS from '../components/sections/CommunityOSS.astro';
+import { ui } from '../i18n/ui';
+const t = ui.fr;
+---
+<Base title={`${t.expertise.kicker} — ${t.meta.title}`} description={t.expertise.intro} active="expertise">
+  <Expertise lang="fr" />
+  <CommunityOSS lang="fr" />
+</Base>
