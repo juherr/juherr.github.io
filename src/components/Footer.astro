@@ -11,6 +11,7 @@ const t = ui[lang];
 
 const homeHref = localizePath('', lang);
 const navItems = t.nav.map((n) => ({ label: n.label, href: localizePath(n.route, lang) }));
+const legalHref = localizePath('mentions-legales', lang);
 ---
 
 <footer class="border-t border-border bg-surface">
@@ -47,8 +48,11 @@ const navItems = t.nav.map((n) => ({ label: n.label, href: localizePath(n.route,
 
   <div class="border-t border-border">
     <div class="mx-auto flex max-w-site flex-wrap justify-between gap-4 px-8 py-[18px] font-mono text-[12px] text-muted">
-      <span>{t.footer.rights}</span>
-      <span>{t.footer.built}</span>
+      <div class="flex flex-wrap gap-x-5 gap-y-2">
+        <span>{t.footer.rights}</span>
+        <a href={legalHref} class="text-muted no-underline hover:text-accent">{t.footer.legal}</a>
+      </div>
+      <a href={site.repoUrl} target="_blank" rel="noopener" class="text-muted no-underline hover:text-accent">{t.footer.built} ↗</a>
     </div>
   </div>
 </footer>

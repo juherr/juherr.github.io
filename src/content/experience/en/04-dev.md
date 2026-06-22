@@ -7,4 +7,6 @@ missions: ["Critical components", "Quality & maintainability", "Technical mentor
 impact: "An engineering standard kept intact."
 order: 4
 lang: "en"
+orgType: "Multiple contexts"
+scope: "20+ years · critical components · architecture"
 ---

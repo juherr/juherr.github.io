@@ -14,12 +14,24 @@ const t = ui[lang];
 
 const backHref = localizePath('projets', lang);
 const backLabel = lang === 'fr' ? 'Tous les projets' : 'All projects';
+const fr = lang === 'fr';
 
-const blocks = [
-  { label: lang === 'fr' ? 'Contexte' : 'Context', text: project.context },
+const metrics = project.metrics ?? [];
+
+// Sidebar: role only (the rest moves to the narrative arc below).
+const sideBlocks = [
   { label: t.labels.role, text: project.role },
-  { label: lang === 'fr' ? 'Réalisation' : 'Delivery', text: project.delivery },
-  { label: t.labels.impact, text: project.impactDetail },
+].filter((b) => Boolean(b.text));
+
+// Commercial narrative arc — only the blocks that are filled in are rendered.
+const story = [
+  { label: fr ? 'Contexte' : 'Context', text: project.context },
+  { label: fr ? 'Problème' : 'Problem', text: project.problem },
+  { label: fr ? 'Enjeu & risques' : 'Stakes & risks', text: project.stakes },
+  { label: fr ? 'Décisions structurantes' : 'Key decisions', text: project.decisions },
+  { label: fr ? 'Réalisation' : 'Delivery', text: project.delivery },
+  { label: fr ? 'Résultat' : 'Result', text: project.impactDetail },
+  { label: fr ? 'Ce que ça démontre' : 'What it demonstrates', text: project.proves },
 ].filter((b) => Boolean(b.text));
 ---
 
@@ -40,9 +52,9 @@ const blocks = [
             ))}
           </div>
         </div>
-        {blocks.length > 0 && (
+        {sideBlocks.length > 0 && (
           <div class="flex flex-col">
-            {blocks.map((bl) => (
+            {sideBlocks.map((bl) => (
               <div class="border-t border-border py-[18px]">
                 <div class="mb-2 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">{bl.label}</div>
                 <p class="m-0 text-[15px] leading-[1.55] text-ink">{bl.text}</p>
@@ -51,7 +63,31 @@ const blocks = [
           </div>
         )}
       </div>
+
+      {metrics.length > 0 && (
+        <div class="mt-9 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[1px] overflow-hidden rounded-[12px] border border-border bg-border">
+          {metrics.map((m) => (
+            <div class="bg-surface p-[18px]">
+              <div class="font-display text-[clamp(20px,2.4vw,26px)] font-semibold tracking-[-0.01em] text-accent">{m.value}</div>
+              <div class="mt-1 font-mono text-[11px] uppercase tracking-[0.06em] text-muted">{m.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
+
+    {story.length > 0 && (
+      <section class="mx-auto max-w-[760px] px-8 pt-[clamp(40px,6vw,64px)]">
+        <div class="flex flex-col gap-8">
+          {story.map((bl) => (
+            <div>
+              <div class="mb-[10px] font-mono text-[11px] uppercase tracking-[0.1em] text-accent">{bl.label}</div>
+              <p class="m-0 text-[16px] leading-[1.7] text-muted">{bl.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <section class="mx-auto max-w-[760px] px-8 py-[clamp(40px,6vw,64px)]">
       <div class="case-body">

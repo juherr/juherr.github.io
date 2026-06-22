@@ -7,4 +7,7 @@ missions: ["Architecture CSMS & eMSP", "Intégrations OCPP / OCPI", "Supervision
 impact: "Plusieurs centaines de bornes supervisées."
 order: 2
 lang: "fr"
+orgType: "Opérateur IRVE / énergie"
+teamSize: "— à préciser"
+scope: "CSMS · eMSP · roaming en production"
 ---

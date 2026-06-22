@@ -13,14 +13,15 @@ export const routes = {
   parcours: 'parcours',
   apropos: 'a-propos',
   contact: 'contact',
+  legal: 'mentions-legales',
 } as const;
 
 export const ui = {
   fr: {
     meta: {
-      title: 'Julien Herr — CTO & Tech Lead indépendant',
+      title: 'Julien Herr — CTO hands-on pour plateformes IRVE & B2B critiques',
       description:
-        "CTO & Tech Lead indépendant — électromobilité, ingénierie back senior et mise en œuvre de l'IA. 20+ ans à concevoir, reprendre et fiabiliser des plateformes logicielles.",
+        "CTO hands-on pour opérateurs IRVE et plateformes B2B critiques : OCPP, OCPI, supervision, facturation, ERP, architecture et delivery. 20+ ans, du dev au CTO. IA utilisée comme accélérateur de delivery.",
     },
     cta: "Discuter d'un projet",
     themeAria: 'Basculer le thème clair / sombre',
@@ -39,21 +40,21 @@ export const ui = {
 
     home: {
       hero: {
-        kicker: 'CTO & Tech Lead indépendant',
-        title: 'Je transforme la complexité en systèmes qui tournent.',
+        kicker: 'CTO hands-on · plateformes IRVE & B2B critiques',
+        title: 'CTO hands-on pour plateformes IRVE et B2B critiques.',
         promise:
-          "Électromobilité, ingénierie back senior et mise en œuvre de l'IA : trois spécialités, une même façon de travailler — comprendre le métier, concevoir l'architecture, et contribuer à la réalisation.",
-        ctaPrimary: "Discuter d'un projet",
-        ctaSecondary: 'Voir mes projets',
+          "J'aide les opérateurs de mobilité électrique, PME et startups à reprendre, fiabiliser ou construire leurs systèmes critiques : OCPP, OCPI, supervision, facturation, ERP, architecture et delivery.",
+        ctaPrimary: "Discuter d'un problème de plateforme",
+        ctaSecondary: 'Voir les cas concrets',
         ctaTertiary: 'Télécharger mon CV',
         credibility:
-          '20+ ans · du dev au CTO · Java / Kotlin / TypeScript / PHP · OCPP / OCPI · IA agentique · Strasbourg / Remote',
+          "20+ ans · du dev au CTO · Java / Kotlin / TypeScript · OCPP / OCPI · IA comme accélérateur de delivery · Strasbourg / Remote",
         graphCenter: 'Plateforme',
       },
       pos: {
         kicker: 'Le fil rouge',
         text: "Les projets complexes échouent rarement sur la technique. Ils échouent quand le métier, le produit et le code cessent de se parler. Mon rôle : les faire avancer dans le même sens.",
-        sub: "Électromobilité, ingénierie back-end senior, mise en œuvre de l'IA — trois spécialités au service d'une seule chose : relier ceux qui décident, ceux qui construisent et ceux qui utilisent.",
+        sub: "Cible première : opérateurs IRVE et plateformes CPO / eMSP. Puis PME et startups B2B avec une plateforme critique. L'IA, je l'utilise comme accélérateur de delivery — pas comme une promesse à part.",
       },
       prob: {
         kicker: 'Problèmes résolus',
@@ -71,7 +72,7 @@ export const ui = {
         items: [
           { title: 'Électromobilité & énergie', text: "Plateformes CPO et eMSP, OCPP 1.6 et 2.x, OCPI et roaming, tarification, facturation, supervision, smart charging, paiement et intégration SI — de la borne au système d'information.", tags: ['OCPP', 'OCPI', 'Roaming', 'Smart charging'] },
           { title: 'Ingénierie & leadership', text: "Du dev au CTO, en passant par tech lead. Architecture (DDD, hexagonal, event-driven), reprise de legacy, structuration d'équipe — et contribution directe sur le code critique.", tags: ['Du dev au CTO', 'DDD', 'Hexagonal', 'Legacy'] },
-          { title: "IA dans les organisations", text: "Au quotidien, j'utilise l'IA agentique pour livrer plus avec des équipes réduites, sans perdre en qualité. Je l'étends au-delà de la tech — produit, marketing, ops : cadrage des cas d'usage et montée en compétence des équipes.", tags: ['Agents', 'Delivery', 'Cas d’usage', 'Équipes'] },
+          { title: "Accélérer le delivery avec l'IA", text: "J'utilise l'IA agentique pour livrer plus vite avec des équipes réduites, sans sacrifier la qualité — agents de dev, cadrage, documentation et automatisation. Un multiplicateur de delivery, pas une activité à part.", tags: ['Agents', 'Delivery', 'Cas d’usage', 'Équipes'] },
         ],
         techTitle: 'Technologies',
         techs: ['Java', 'Kotlin', 'Spring Boot', 'TypeScript', 'PHP', 'NestJS', 'Nuxt', 'PostgreSQL', 'MongoDB', 'Docker', 'Cloudflare', 'GitHub Actions'],
@@ -82,14 +83,26 @@ export const ui = {
         link: 'Voir tous les projets',
       },
       modes: {
-        kicker: "Modes d'intervention",
-        title: 'Comment je peux intervenir',
+        kicker: 'Offres',
+        title: 'Quatre façons de démarrer',
+        note: 'Durées indicatives — ajustées à votre contexte.',
         items: [
-          { title: 'CTO ou Tech Lead de transition', text: "Continuité technique, reprise d'équipe, stabilisation d'une plateforme, recrutement et préparation de la suite." },
-          { title: 'Cadrage produit & architecture', text: "Discovery, audit, architecture cible, estimation, feuille de route et réduction des risques." },
-          { title: 'Développement & delivery', text: "Contribution directe sur les composants critiques en Java, Kotlin ou TypeScript, accélérée par l'IA agentique." },
-          { title: "Mise en œuvre de l'IA", text: "Cadrage des cas d'usage, outillage des équipes et montée en compétence — du delivery agentique jusqu'aux usages produit et métier." },
-          { title: 'Expertise électromobilité', text: "Audit OCPP et OCPI, supervision, roaming, tarification, paiement, smart charging et intégration SI." },
+          { title: 'Audit & plan de reprise', duration: '5 à 10 jours', text: "Comprendre une plateforme, cartographier les flux, identifier les risques et sortir un plan 30/60/90 actionnable avec quick wins." },
+          { title: 'CTO / Tech Lead de transition', duration: '1 à 3 j/semaine', text: "Sécuriser la continuité technique, arbitrer, structurer l'équipe, recruter et relancer le delivery." },
+          { title: 'Cadrage produit & architecture IRVE', duration: 'Mission courte', text: "Transformer un besoin CPO / eMSP / OCPP / OCPI / billing en architecture cible et trajectoire MVP → production." },
+          { title: 'Delivery hands-on', duration: 'Mission ciblée', text: "Livrer ou débloquer un composant critique en Java, Kotlin ou TypeScript, accéléré par l'IA agentique." },
+        ],
+      },
+      signals: {
+        kicker: 'Quand me contacter',
+        title: 'Je peux vous aider si…',
+        items: [
+          'votre plateforme fonctionne, mais devient difficile à faire évoluer ;',
+          "vos flux métier, facturation ou supervision ne sont pas assez fiables ;",
+          "votre équipe livre moins vite à cause de la dette technique ;",
+          'vous devez cadrer un produit OCPP / OCPI / billing / smart charging ;',
+          "vous avez besoin d'un CTO hands-on sans recruter immédiatement ;",
+          "vous voulez utiliser l'IA pour accélérer le delivery sans créer du chaos.",
         ],
       },
       path: {
@@ -214,29 +227,74 @@ export const ui = {
     contact: {
       kicker: 'Contact',
       title: 'Parlons de votre projet',
-      intro: "Besoin d'un CTO de transition, d'un audit, d'un cadrage ou d'une expertise IRVE ? Décrivez votre contexte, je reviens vers vous rapidement.",
+      intro: "Besoin d'un CTO de transition, d'un audit, d'un cadrage ou d'une expertise IRVE ? En 5 lignes : contexte, problème, urgence, stack, objectif. Je reviens vers vous rapidement.",
       subjectsTitle: 'Sujets fréquents',
       subjects: ['CTO / Tech Lead de transition', 'Audit technique', 'Cadrage produit', 'Reprise de plateforme', 'Expertise IRVE', 'Mission de développement', 'Conseil en architecture'],
+      frameTitle: "Cadre d'intervention",
+      frame: [
+        'Missions fractional (1–3 j/sem) ou mission courte — pas de temps plein',
+        'Durée minimale : environ 1 mois',
+        'Remote majoritaire · base Strasbourg / Alsace · France & Europe',
+        'Cible : opérateurs IRVE / énergie, puis PME & startups B2B à plateforme critique',
+        'Échanges en français · anglais écrit technique courant',
+        "Hors cible : régie pure sans enjeu d'architecture, projets sans dimension produit",
+      ],
       cvLabel: 'Mon CV',
       fName: 'Nom', phName: 'Votre nom',
       fEmail: 'Email', phEmail: 'vous@entreprise.com',
       fSubject: 'Sujet',
       fMessage: 'Message', phMessage: 'Décrivez votre besoin, votre contexte et vos délais…',
+      messageTemplate: "Bonjour Julien,\n\nNous avons besoin d'aide sur [plateforme / équipe / produit].\n\nContexte :\nProblème principal :\nObjectif dans les 3 prochains mois :\nStack actuelle :\nDisponibilité pour échanger :",
       send: 'Envoyer le message',
-      formNote: 'Le formulaire ouvre votre messagerie (mailto). Aucune donnée stockée.',
+      formNote: 'Le formulaire ouvre votre messagerie (mailto). Aucune donnée stockée. Vous pouvez aussi écrire directement à ' + 'l’adresse ci-contre.',
       sentTitle: 'Message prêt à partir',
       sentText: 'Votre messagerie vient de s’ouvrir avec le message pré-rempli.',
     },
 
+    legal: {
+      kicker: 'Légal',
+      title: 'Mentions légales',
+      updated: 'Dernière mise à jour : 22 juin 2026',
+      sections: [
+        { heading: 'Éditeur du site', body: [
+          'Dénomination : Herr Engineering',
+          'Forme juridique : SASU (société par actions simplifiée unipersonnelle)',
+          'Capital social : 1 000 €',
+          'Siège social : 1 rue de la Colline, 67210 Obernai, France',
+          'SIRET : 999 428 436 00011',
+          'RCS : Saverne · 999 428 436',
+          'N° TVA intracommunautaire : FR91 999 428 436',
+          'Directeur de la publication : Julien Herr',
+          'Contact : me@juherr.dev',
+        ] },
+        { heading: 'Hébergement', body: [
+          'Le site est hébergé par GitHub, Inc.',
+          '88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis — github.com',
+        ] },
+        { heading: 'Propriété intellectuelle', body: [
+          'Sauf mention contraire, le contenu de ce site (textes, structure, éléments graphiques) est la propriété de Herr Engineering. Le code source du site est publié en open source — voir le dépôt lié en pied de page.',
+        ] },
+        { heading: 'Données personnelles', body: [
+          'Ce site n’utilise aucun cookie de suivi ni outil de mesure d’audience.',
+          'Le formulaire de contact ouvre votre logiciel de messagerie (mailto) : aucune donnée n’est enregistrée par le site. Les informations transmises par email (nom, adresse email, message) sont traitées dans le seul but de répondre à votre demande, sur la base de l’intérêt légitime, et conservées le temps nécessaire à l’échange.',
+          'Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et de suppression de vos données en écrivant à me@juherr.dev.',
+        ] },
+        { heading: 'Cookies', body: [
+          'Aucun cookie de suivi. Seul le choix du thème clair / sombre est conservé localement dans votre navigateur (localStorage), à des fins strictement fonctionnelles.',
+        ] },
+      ],
+    },
+
     footer: {
-      tagline: "CTO & Tech Lead indépendant — électromobilité, ingénierie back senior & mise en œuvre de l'IA.",
+      tagline: "CTO hands-on pour plateformes IRVE & B2B critiques — OCPP, OCPI, supervision, facturation, architecture & delivery.",
       loc: 'Strasbourg, Alsace · Remote',
       navTitle: 'Navigation',
       home: 'Accueil',
       connectTitle: 'Contact',
       cvLabel: 'Mon CV',
+      legal: 'Mentions légales',
       rights: '© 2026 Julien Herr',
-      built: 'Astro · GitHub Pages',
+      built: 'Code source',
     },
 
     notFound: {
@@ -248,9 +306,9 @@ export const ui = {
 
   en: {
     meta: {
-      title: 'Julien Herr — Independent CTO & Tech Lead',
+      title: 'Julien Herr — Hands-on CTO for EV-charging & critical B2B platforms',
       description:
-        'Independent CTO & Tech Lead — e-mobility, senior backend engineering and putting AI to work. 20+ years designing, recovering and hardening software platforms.',
+        'Hands-on CTO for EV-charging operators and critical B2B platforms: OCPP, OCPI, monitoring, billing, ERP, architecture and delivery. 20+ years, from dev to CTO. AI used as a delivery accelerator.',
     },
     cta: 'Discuss a project',
     themeAria: 'Toggle light / dark theme',
@@ -269,21 +327,21 @@ export const ui = {
 
     home: {
       hero: {
-        kicker: 'Independent CTO & Tech Lead',
-        title: 'I turn complexity into systems that run.',
+        kicker: 'Hands-on CTO · EV-charging & critical B2B platforms',
+        title: 'Hands-on CTO for EV-charging and critical B2B platforms.',
         promise:
-          'E-mobility, senior backend engineering and putting AI to work: three specialities, one way of working — understand the business, design the architecture, and contribute to the build.',
-        ctaPrimary: 'Discuss a project',
-        ctaSecondary: 'See my projects',
+          'I help EV-charging operators, SMEs and startups take over, harden or build their critical systems: OCPP, OCPI, monitoring, billing, ERP, architecture and delivery.',
+        ctaPrimary: 'Discuss a platform problem',
+        ctaSecondary: 'See real cases',
         ctaTertiary: 'Download my CV',
         credibility:
-          '20+ years · from dev to CTO · Java / Kotlin / TypeScript / PHP · OCPP / OCPI · agentic AI · Strasbourg / Remote',
+          '20+ years · from dev to CTO · Java / Kotlin / TypeScript · OCPP / OCPI · AI as a delivery accelerator · Strasbourg / Remote',
         graphCenter: 'Platform',
       },
       pos: {
         kicker: 'The through-line',
         text: 'Complex projects rarely fail on the technology. They fail when the business, the product and the code stop talking to each other. My job: get them moving in the same direction.',
-        sub: 'E-mobility, senior backend engineering, putting AI to work — three specialities serving one thing: connecting the people who decide, those who build and those who use.',
+        sub: 'Primary focus: EV-charging operators and CPO / eMSP platforms. Then SMEs and startups with a critical B2B platform. AI, I use as a delivery accelerator — not as a separate promise.',
       },
       prob: {
         kicker: 'Problems solved',
@@ -301,7 +359,7 @@ export const ui = {
         items: [
           { title: 'E-mobility & energy', text: 'CPO and eMSP platforms, OCPP 1.6 and 2.x, OCPI and roaming, pricing, billing, monitoring, smart charging, payment and IS integration — from the charge point to the information system.', tags: ['OCPP', 'OCPI', 'Roaming', 'Smart charging'] },
           { title: 'Engineering & leadership', text: 'From dev to CTO, via tech lead. Architecture (DDD, hexagonal, event-driven), legacy recovery, team structuring — and direct contribution on critical code.', tags: ['Dev to CTO', 'DDD', 'Hexagonal', 'Legacy'] },
-          { title: 'AI in organisations', text: "Day to day, I use agentic AI to ship more with smaller teams without losing quality. I'm extending it beyond engineering — product, marketing, ops: use-case framing and team upskilling.", tags: ['Agents', 'Delivery', 'Use cases', 'Teams'] },
+          { title: 'Accelerate delivery with AI', text: "I use agentic AI to ship faster with smaller teams, without sacrificing quality — dev agents, framing, documentation and automation. A delivery multiplier, not a separate activity.", tags: ['Agents', 'Delivery', 'Use cases', 'Teams'] },
         ],
         techTitle: 'Technologies',
         techs: ['Java', 'Kotlin', 'Spring Boot', 'TypeScript', 'PHP', 'NestJS', 'Nuxt', 'PostgreSQL', 'MongoDB', 'Docker', 'Cloudflare', 'GitHub Actions'],
@@ -312,14 +370,26 @@ export const ui = {
         link: 'See all projects',
       },
       modes: {
-        kicker: 'Engagement models',
-        title: 'How I can step in',
+        kicker: 'Offers',
+        title: 'Four ways to start',
+        note: 'Indicative durations — tailored to your context.',
         items: [
-          { title: 'Interim CTO or Tech Lead', text: 'Technical continuity, team handover, platform stabilisation, recruitment and preparing what comes next.' },
-          { title: 'Product & architecture framing', text: 'Discovery, audit, target architecture, estimation, roadmap and risk reduction.' },
-          { title: 'Development & delivery', text: 'Direct contribution on critical components in Java, Kotlin or TypeScript, accelerated by agentic AI.' },
-          { title: 'Putting AI to work', text: 'Use-case framing, team tooling and upskilling — from agentic delivery through to product and business use.' },
-          { title: 'E-mobility expertise', text: 'OCPP and OCPI audit, monitoring, roaming, pricing, payment, smart charging and IS integration.' },
+          { title: 'Audit & recovery plan', duration: '5 to 10 days', text: 'Understand a platform, map the flows, identify the risks and produce an actionable 30/60/90 plan with quick wins.' },
+          { title: 'Interim CTO / Tech Lead', duration: '1 to 3 days/week', text: 'Secure technical continuity, make the calls, structure the team, recruit and get delivery moving again.' },
+          { title: 'Product & EV-charging architecture framing', duration: 'Short engagement', text: 'Turn a CPO / eMSP / OCPP / OCPI / billing need into a target architecture and an MVP → production path.' },
+          { title: 'Hands-on delivery', duration: 'Targeted engagement', text: 'Ship or unblock a critical component in Java, Kotlin or TypeScript, accelerated by agentic AI.' },
+        ],
+      },
+      signals: {
+        kicker: 'When to reach out',
+        title: 'I can help if…',
+        items: [
+          'your platform works, but is becoming hard to evolve;',
+          'your business, billing or monitoring flows are not reliable enough;',
+          'your team ships slower because of technical debt;',
+          'you need to frame an OCPP / OCPI / billing / smart-charging product;',
+          'you need a hands-on CTO without hiring one right away;',
+          'you want to use AI to accelerate delivery without creating chaos.',
         ],
       },
       path: {
@@ -444,29 +514,74 @@ export const ui = {
     contact: {
       kicker: 'Contact',
       title: "Let's talk about your project",
-      intro: "Need an interim CTO, an audit, product framing or EV charging expertise? Describe your context and I'll get back to you quickly.",
+      intro: "Need an interim CTO, an audit, product framing or EV-charging expertise? In 5 lines: context, problem, urgency, stack, goal. I'll get back to you quickly.",
       subjectsTitle: 'Common topics',
       subjects: ['Interim CTO / Tech Lead', 'Technical audit', 'Product framing', 'Platform recovery', 'EV charging expertise', 'Development work', 'Architecture consulting'],
+      frameTitle: 'How I work',
+      frame: [
+        'Fractional engagements (1–3 days/week) or short missions — not full-time',
+        'Minimum duration: around 1 month',
+        'Mostly remote · based in Strasbourg / Alsace · France & Europe',
+        'Focus: EV-charging / energy operators, then B2B SMEs & startups with a critical platform',
+        'Working in French · fluent written technical English',
+        'Out of scope: pure staffing with no architecture stake, projects with no product dimension',
+      ],
       cvLabel: 'My CV',
       fName: 'Name', phName: 'Your name',
       fEmail: 'Email', phEmail: 'you@company.com',
       fSubject: 'Subject',
       fMessage: 'Message', phMessage: 'Describe your need, your context and your timeline…',
+      messageTemplate: 'Hi Julien,\n\nWe need help with [platform / team / product].\n\nContext:\nMain problem:\nGoal for the next 3 months:\nCurrent stack:\nAvailability to talk:',
       send: 'Send message',
-      formNote: 'The form opens your email client (mailto). No data is stored.',
+      formNote: 'The form opens your email client (mailto). No data is stored. You can also email the address opposite directly.',
       sentTitle: 'Message ready to send',
       sentText: 'Your email client just opened with the message pre-filled.',
     },
 
+    legal: {
+      kicker: 'Legal',
+      title: 'Legal notice',
+      updated: 'Last updated: 22 June 2026',
+      sections: [
+        { heading: 'Site publisher', body: [
+          'Company name: Herr Engineering',
+          'Legal form: SASU (single-shareholder simplified joint-stock company)',
+          'Share capital: €1,000',
+          'Registered office: 1 rue de la Colline, 67210 Obernai, France',
+          'SIRET: 999 428 436 00011',
+          'Trade register (RCS): Saverne · 999 428 436',
+          'EU VAT number: FR91 999 428 436',
+          'Publication director: Julien Herr',
+          'Contact: me@juherr.dev',
+        ] },
+        { heading: 'Hosting', body: [
+          'This site is hosted by GitHub, Inc.',
+          '88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA — github.com',
+        ] },
+        { heading: 'Intellectual property', body: [
+          'Unless otherwise stated, the content of this site (text, structure, graphic elements) is the property of Herr Engineering. The site’s source code is open source — see the repository linked in the footer.',
+        ] },
+        { heading: 'Personal data', body: [
+          'This site uses no tracking cookies and no analytics tools.',
+          'The contact form opens your email client (mailto): no data is stored by the site. The information you send by email (name, email address, message) is processed solely to answer your request, on the basis of legitimate interest, and kept for as long as the exchange requires.',
+          'Under the GDPR, you have the right to access, rectify and erase your data by writing to me@juherr.dev.',
+        ] },
+        { heading: 'Cookies', body: [
+          'No tracking cookies. Only the light / dark theme choice is stored locally in your browser (localStorage), for strictly functional purposes.',
+        ] },
+      ],
+    },
+
     footer: {
-      tagline: 'Independent CTO & Tech Lead — e-mobility, senior backend engineering & putting AI to work.',
+      tagline: 'Hands-on CTO for EV-charging & critical B2B platforms — OCPP, OCPI, monitoring, billing, architecture & delivery.',
       loc: 'Strasbourg, France · Remote',
       navTitle: 'Navigation',
       home: 'Home',
       connectTitle: 'Contact',
       cvLabel: 'My CV',
+      legal: 'Legal notice',
       rights: '© 2026 Julien Herr',
-      built: 'Astro · GitHub Pages',
+      built: 'Source code',
     },
 
     notFound: {

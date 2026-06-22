@@ -132,19 +132,36 @@ const chip = 'rounded-md border border-border bg-surface-2 px-[9px] py-1 font-mo
   </div>
 </section>
 
-<!-- MODES D'INTERVENTION -->
+<!-- SIGNAUX -->
+<section class="border-t border-border">
+  <div class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+    <div class={`mb-3 ${kicker}`}>{h.signals.kicker}</div>
+    <h2 class={`m-0 mb-10 ${sectionTitle}`}>{h.signals.title}</h2>
+    <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-x-8 gap-y-4 p-0">
+      {h.signals.items.map((s) => (
+        <li class="flex gap-[12px] text-[15px] leading-[1.5] text-ink">
+          <span class="mt-[2px] shrink-0 text-accent">✓</span><span>{s}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<!-- OFFRES -->
 <section class="border-t border-border bg-surface">
   <div class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
     <div class={`mb-3 ${kicker}`}>{h.modes.kicker}</div>
-    <h2 class={`m-0 mb-10 ${sectionTitle}`}>{h.modes.title}</h2>
+    <h2 class={`m-0 mb-2 ${sectionTitle}`}>{h.modes.title}</h2>
+    <p class="m-0 mb-10 text-[14px] text-muted">{h.modes.note}</p>
     <div class="grid grid-cols-[repeat(auto-fit,minmax(255px,1fr))] gap-5">
       {h.modes.items.map((m) => (
-        <div class="rounded-[14px] border border-border bg-bg p-[26px]">
+        <div class="flex flex-col rounded-[14px] border border-border bg-bg p-[26px]">
           <div class="mb-[14px] flex items-center gap-[10px]">
             <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
             <h3 class="m-0 font-display text-[18px] font-semibold leading-[1.25]">{m.title}</h3>
           </div>
-          <p class="m-0 text-[14px] leading-[1.55] text-muted">{m.text}</p>
+          <p class="m-0 mb-[18px] flex-1 text-[14px] leading-[1.55] text-muted">{m.text}</p>
+          <span class="self-start rounded-md border border-blue-soft bg-blue-soft px-[9px] py-1 font-mono text-[11px] uppercase tracking-[0.06em] text-blue">{m.duration}</span>
         </div>
       ))}
     </div>

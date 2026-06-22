@@ -18,6 +18,13 @@ const projects = defineCollection({
     context: z.string().optional(),
     delivery: z.string().optional(),
     impactDetail: z.string().optional(),
+    /** Orders of magnitude shown as a metrics strip (label + value). */
+    metrics: z.array(z.object({ label: z.string(), value: z.string() })).optional(),
+    /** Stronger narrative blocks: problem → stakes → decisions → (delivery) → (impact) → proves. */
+    problem: z.string().optional(),
+    stakes: z.string().optional(),
+    decisions: z.string().optional(),
+    proves: z.string().optional(),
   }),
 });
 
@@ -32,6 +39,10 @@ const experience = defineCollection({
     impact: z.string(),
     order: z.number(),
     lang: z.enum(['fr', 'en']).default('fr'),
+    /** Optional proof layer for recruiters / prospects comparing profiles. */
+    orgType: z.string().optional(),
+    teamSize: z.string().optional(),
+    scope: z.string().optional(),
   }),
 });
 

@@ -7,4 +7,6 @@ missions: ["CTO / Tech Lead de transition", "Cadrage produit & architecture", "C
 impact: "Des plateformes fiables, livrées avec des équipes réduites."
 order: 1
 lang: "fr"
+orgType: "Indépendant"
+scope: "PME · startups · opérateurs IRVE"
 ---

@@ -7,4 +7,6 @@ missions: ["Interim CTO / Tech Lead", "Product & architecture framing", "Direct 
 impact: "Reliable platforms, delivered with small teams."
 order: 1
 lang: "en"
+orgType: "Independent"
+scope: "SMEs · startups · EV-charging operators"
 ---

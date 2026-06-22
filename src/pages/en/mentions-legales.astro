@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Legal from '../../components/sections/Legal.astro';
+import { ui } from '../../i18n/ui';
+const t = ui.en;
+---
+<Base title={`${t.legal.title} — ${t.meta.title}`} description={t.legal.title} active="legal">
+  <Legal lang="en" />
+</Base>

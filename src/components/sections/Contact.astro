@@ -21,11 +21,20 @@ const inputClass =
       <p class="m-0 mb-8 max-w-[440px] text-[17px] leading-[1.6] text-muted">{c.intro}</p>
 
       <div class="mb-[14px] font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{c.subjectsTitle}</div>
-      <div class="mb-[34px] flex flex-wrap gap-2">
+      <div class="mb-[30px] flex flex-wrap gap-2">
         {c.subjects.map((s) => (
           <span class="rounded-[7px] border border-border bg-surface-2 px-[11px] py-[6px] font-mono text-[12px] text-ink">{s}</span>
         ))}
       </div>
+
+      <div class="mb-[14px] font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{c.frameTitle}</div>
+      <ul class="m-0 mb-[34px] flex max-w-[440px] list-none flex-col gap-[10px] p-0">
+        {c.frame.map((f) => (
+          <li class="flex gap-[10px] text-[14px] leading-[1.45] text-muted">
+            <span class="mt-[2px] shrink-0 text-accent">→</span><span>{f}</span>
+          </li>
+        ))}
+      </ul>
 
       <div class="flex flex-col gap-3">
         <a href={mailto} class="text-[16px] font-semibold text-accent no-underline">{site.email} →</a>
@@ -63,7 +72,7 @@ const inputClass =
         </label>
         <label class="flex flex-col gap-[7px]">
           <span class="text-[13.5px] font-medium text-ink">{c.fMessage}</span>
-          <textarea name="message" rows="5" required placeholder={c.phMessage} class={`${inputClass} resize-y`}></textarea>
+          <textarea name="message" rows="9" required placeholder={c.phMessage} class={`${inputClass} resize-y`}>{c.messageTemplate}</textarea>
         </label>
         <button type="submit" class="cursor-pointer rounded-[9px] border-0 bg-accent px-[22px] py-[14px] text-[15px] font-semibold text-on-accent">{c.send}</button>
         <p class="m-0 font-mono text-[12px] text-muted">{c.formNote}</p>

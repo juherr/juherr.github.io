@@ -24,6 +24,13 @@ const experience = await getExperience(lang);
       <div>
         <div class="font-mono text-[13px] font-medium text-accent">{x.data.period}</div>
         <div class="mt-[6px] font-mono text-[12px] text-muted">{x.data.domains}</div>
+        {(x.data.orgType || x.data.teamSize || x.data.scope) && (
+          <ul class="m-0 mt-[10px] flex list-none flex-col gap-[3px] p-0 font-mono text-[12px] leading-[1.4] text-muted">
+            {x.data.orgType && <li>{x.data.orgType}</li>}
+            {x.data.teamSize && <li>{x.data.teamSize}</li>}
+            {x.data.scope && <li>{x.data.scope}</li>}
+          </ul>
+        )}
       </div>
       <div>
         <h2 class="m-0 mb-2 font-display text-[21px] font-semibold tracking-[-0.01em]">{x.data.role}</h2>

@@ -7,4 +7,6 @@ missions: ["Composants critiques", "Qualité & maintenabilité", "Mentorat techn
 impact: "Une exigence technique restée intacte."
 order: 4
 lang: "fr"
+orgType: "Multi-contextes"
+scope: "20+ ans · composants critiques · architecture"
 ---

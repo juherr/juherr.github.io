@@ -7,4 +7,7 @@ missions: ["CSMS & eMSP architecture", "OCPP / OCPI integrations", "Monitoring &
 impact: "Several hundred charge points supervised."
 order: 2
 lang: "en"
+orgType: "EV-charging / energy operator"
+teamSize: "— TBC"
+scope: "CSMS · eMSP · roaming in production"
 ---

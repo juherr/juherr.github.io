@@ -4,6 +4,7 @@ export const site = {
   // Assembled at runtime to keep the address out of static scrapers.
   email: ['me', 'juherr.dev'].join('@'),
   cvUrl: 'https://juherr.dev/cv',
+  repoUrl: 'https://github.com/juherr/juherr.github.io',
   social: {
     linkedin: 'https://www.linkedin.com/in/juherr/',
     github: 'https://github.com/juherr',
