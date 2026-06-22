@@ -1,7 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { ui, type Lang } from '../i18n/ui';
 import { localizePath } from '../i18n/utils';
-import { site } from '../config/site';
+import logo from '../assets/logo-juherr.png';
 import ThemeToggle from './ThemeToggle.astro';
 import LangSwitch from './LangSwitch.astro';
 import MobileMenu from './MobileMenu.astro';
@@ -27,11 +28,13 @@ const contactHref = localizePath('contact', lang);
 >
   <div class="mx-auto flex max-w-site items-center justify-between gap-5 px-8 py-[14px]">
     <a href={homeHref} class="flex shrink-0 items-center gap-[11px] no-underline">
-      <img
-        src="/assets/logo-juherr.png"
-        alt={site.name}
-        width="38"
-        height="38"
+      <Image
+        src={logo}
+        alt=""
+        width={38}
+        height={38}
+        densities={[1, 2]}
+        loading="eager"
         class="block h-[38px] w-[38px] rounded-[9px]"
       />
       <span class="text-[16px] font-semibold tracking-[-0.01em] text-ink">Julien&nbsp;Herr</span>

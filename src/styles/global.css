@@ -6,7 +6,8 @@
   --ink: #0e1b2a;
   --muted: #5b6b7d;
   --border: #e3e8ee;
-  --accent: #ee5d24;
+  /* Darkened from #ee5d24 to meet WCAG AA 4.5:1 (white-on-accent and accent-text on light bg). */
+  --accent: #c83f12;
   --on-accent: #ffffff;
   --accent-soft: #fdeee7;
   --blue: #1d63d1;

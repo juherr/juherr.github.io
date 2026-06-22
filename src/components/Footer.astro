@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { ui, type Lang } from '../i18n/ui';
 import { localizePath } from '../i18n/utils';
 import { site, mailto } from '../config/site';
+import logo from '../assets/logo-juherr.png';
 
 interface Props {
   lang: Lang;
@@ -18,7 +20,7 @@ const legalHref = localizePath('mentions-legales', lang);
   <div class="mx-auto grid max-w-site grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-10 px-8 pb-10 pt-14">
     <div>
       <a href={homeHref} class="mb-4 flex items-center gap-[11px] no-underline">
-        <img src="/assets/logo-juherr.png" alt={site.name} width="36" height="36" class="h-9 w-9 rounded-[9px]" />
+        <Image src={logo} alt="" width={36} height={36} densities={[1, 2]} class="h-9 w-9 rounded-[9px]" />
         <span class="text-[16px] font-semibold text-ink">Julien&nbsp;Herr</span>
       </a>
       <p class="m-0 mb-[10px] max-w-[300px] text-[14px] leading-[1.55] text-muted">{t.footer.tagline}</p>

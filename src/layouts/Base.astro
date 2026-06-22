@@ -49,13 +49,26 @@ const ogImage = new URL('/assets/logo-juherr.png', Astro.site).href;
     <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
     <meta name="twitter:card" content="summary" />
 
-    <!-- Fonts -->
+    <!-- Fonts — loaded non-render-blocking (swap to "all" once ready) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Apply the theme before first paint to avoid a flash -->
     <script is:inline>
