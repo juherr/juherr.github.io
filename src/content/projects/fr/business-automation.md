@@ -1,10 +1,10 @@
 ---
 title: "Automatisation métier"
 domain: "Métier · ERP"
-summary: "Au-delà de l'IRVE : ERP, facturation, support, opérations, synchronisation de données et réduction des tâches manuelles."
+summary: "Au-delà de l'IRVE : ERP (Odoo), facturation, support, opérations, synchronisation de données et réduction des tâches manuelles."
 role: "Architecte & intégrateur"
 impact: "Moins de manuel"
-techs: ["Java", "SQL", "Intégration"]
+techs: ["Java", "Odoo", "SQL", "Intégration"]
 featured: false
 order: 6
 lang: "fr"

@@ -1,7 +1,7 @@
 ---
-title: "Global eMobility ID Registry"
-domain: "Open data · Public"
-summary: "Worldwide registry of e-mobility actor identifiers: source aggregation, open data, API, normalisation and roaming."
+title: "evsedb — EVSE equipment registry"
+domain: "Charge point · Open data"
+summary: "Worldwide registry of charging equipment (EVSE): source aggregation, open data, API and normalisation — the data on the charge-point side."
 role: "Creator & maintainer"
 impact: "Public project"
 techs: ["TypeScript", "Cloudflare", "GitHub Actions"]
@@ -11,6 +11,6 @@ order: 3
 lang: "en"
 ---
 
-Worldwide registry of e-mobility actor identifiers: source aggregation, open data,
-API, normalisation and roaming. The project is public and continuously refreshed via
-GitHub Actions, deployed on Cloudflare.
+Worldwide registry of charging equipment (EVSE): source aggregation, open data, API
+and normalisation of hardware data on the charge-point side. The project is public
+and continuously refreshed via GitHub Actions, deployed on Cloudflare.

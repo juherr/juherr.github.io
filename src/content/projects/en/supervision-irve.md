@@ -1,10 +1,10 @@
 ---
 title: "EV charging supervision platform"
 domain: "EVSE · CSMS"
-summary: "CSMS running in production across several hundred charge points: OCPP, monitoring, device management, pricing, billing and IS integration."
+summary: "CSMS running in production across several hundred charge points: OCPP, monitoring, device management, charge valorisation, billing and IS integration — available white-label."
 role: "Architect & tech lead"
 impact: "100s charge points"
-techs: ["Kotlin", "Spring Boot", "OCPP 1.6 / 2.x", "PostgreSQL", "Docker", "Cloudflare"]
+techs: ["Kotlin", "Spring Boot", "OCPP 1.6 / 2.x", "PostgreSQL", "Odoo", "Docker", "Cloudflare"]
 featured: true
 order: 1
 lang: "en"
@@ -39,3 +39,6 @@ pricing, billing and feeding the operator's information system.
 The core handles OCPP connectivity, real-time fleet monitoring and a pricing engine
 that covers complex business cases. Billing and IS integration close the loop, from
 the charging session all the way to the accounting entry.
+
+The platform is available **white-label**, with a charge-valorisation engine and
+CRM/ERP integration (Odoo). Screenshots available on request.

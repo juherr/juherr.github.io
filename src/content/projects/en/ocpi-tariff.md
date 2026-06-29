@@ -1,7 +1,7 @@
 ---
 title: "OCPI Tariff"
 domain: "OCPI · Tariffs"
-summary: "OCPI tariff management application: multi-tenant, OCPI validation, complex tariff handling and business UX on a modular architecture."
+summary: "An OCPI pricing engine to valorise charging: multi-tenant, OCPI validation, complex tariff handling and business UX on a modular architecture."
 role: "Architect & developer"
 impact: "Multi-tenant"
 techs: ["Kotlin", "Spring Boot", "OCPI"]

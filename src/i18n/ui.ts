@@ -70,12 +70,18 @@ export const ui = {
         kicker: 'Spécialités',
         title: 'Trois spécialités, une même façon de travailler',
         items: [
-          { title: 'Électromobilité & énergie', text: "Plateformes CPO et eMSP, OCPP 1.6 et 2.x, OCPI et roaming, tarification, facturation, supervision, smart charging, paiement et intégration SI — de la borne au système d'information.", tags: ['OCPP', 'OCPI', 'Roaming', 'Smart charging'] },
+          { title: 'Électromobilité & énergie', text: "Plateformes CPO et eMSP, OCPP 1.6 et 2.x, OCPI et roaming, tarification, facturation, supervision, paiement et intégration SI — je maîtrise toute la chaîne, de la borne jusqu'à l'usage.", tags: ['OCPP', 'OCPI', 'Roaming', 'CPO / eMSP'] },
           { title: 'Ingénierie & leadership', text: "Du dev au CTO, en passant par tech lead. Architecture (DDD, hexagonal, event-driven), reprise de legacy, structuration d'équipe — et contribution directe sur le code critique.", tags: ['Du dev au CTO', 'DDD', 'Hexagonal', 'Legacy'] },
           { title: "Accélérer le delivery avec l'IA", text: "J'utilise l'IA agentique pour livrer plus vite avec des équipes réduites, sans sacrifier la qualité — agents de dev, cadrage, documentation et automatisation. Un multiplicateur de delivery, pas une activité à part.", tags: ['Agents', 'Delivery', 'Cas d’usage', 'Équipes'] },
         ],
         techTitle: 'Technologies',
         techs: ['Java', 'Kotlin', 'Spring Boot', 'TypeScript', 'PHP', 'NestJS', 'Nuxt', 'PostgreSQL', 'MongoDB', 'Docker', 'Cloudflare', 'GitHub Actions'],
+      },
+      chainTeaser: {
+        kicker: 'Chaîne de valeur IRVE',
+        title: "De la borne à l'usage",
+        text: "Je maîtrise chaque maillon de la chaîne de recharge : la borne, les protocoles OCPP/OCPI, la supervision CPO, le roaming et l'usage côté eMSP — preuves à l'appui.",
+        link: 'Voir la chaîne complète',
       },
       proj: {
         kicker: 'Projets mis en avant',
@@ -121,33 +127,49 @@ export const ui = {
     expertise: {
       kicker: 'Expertise',
       title: 'Trois spécialités, une compétence transverse',
-      intro: "Je n'aborde jamais la technique pour elle-même : chaque choix d'architecture sert un problème métier, une contrainte d'exploitation ou un enjeu de fiabilité. Produit & architecture est le fil rouge qui relie mes trois spécialités.",
+      intro: "Je n'aborde jamais la technique pour elle-même : chaque choix d'architecture sert un problème métier, une contrainte d'exploitation ou un enjeu de fiabilité. Première spécialité : la maîtrise de toute la chaîne IRVE, de la borne jusqu'à l'usage. Produit & architecture est le fil rouge qui relie mes trois spécialités.",
       note: 'Les technologies restent secondaires par rapport aux problèmes métier résolus.',
-      axes: [
-        { num: '01', title: 'Électromobilité & énergie', text: "De la borne au système d'information : j'ai construit chaque maillon de la chaîne CPO/eMSP.", groups: [
-          { label: 'Supervision & OCPP', proofs: [
-            { name: 'Supervision de bornes & assets télécom (modem/SIM)', href: '', prop: true },
-            { name: 'SteVe — contributions & déploiement', href: 'https://github.com/steve-community/steve', prop: false },
+      chain: {
+        num: '01',
+        title: 'Électromobilité & énergie',
+        tagline: "De la borne à l'usage : j'ai construit chaque maillon de la chaîne IRVE, en production.",
+        links: [
+          { num: '01', title: 'La borne', tagline: "Référentiel d'équipements, simulation et supervision matérielle.", status: '', proofs: [
+            { name: 'evsedb — référentiel EVSE', href: 'https://evsedb.com', prop: false },
+            { name: 'ocpp-cp-simulator', href: 'https://github.com/shiv3/ocpp-cp-simulator', prop: false },
+            { name: 'awesome-ev-charging', href: 'https://github.com/juherr/awesome-ev-charging', prop: false },
+          ] },
+          { num: '02', title: 'Protocoles (OCPP & OCPI)', tagline: "Je parle et j'outille les protocoles qui font tenir la chaîne.", status: '', proofs: [
+            { name: 'OCPP 1.6 / 2.x', href: '', prop: false },
+            { name: 'ocpp-toolkit', href: 'https://github.com/izivia/ocpp-toolkit', prop: false },
+            { name: 'ocpi-toolkit', href: 'https://github.com/izivia/ocpi-toolkit', prop: false },
             { name: 'ocpp-gateway', href: 'https://github.com/juherr/ocpp-gateway', prop: false },
           ] },
-          { label: 'Roaming & OCPI', proofs: [
-            { name: 'Serveur gateway / cache OCPI', href: '', prop: true },
+          { num: '03', title: 'Supervision / CPO (CSMS)', tagline: 'Exploiter, superviser, tarifer et facturer un parc de bornes.', status: '', proofs: [
+            { name: 'SteVe — contributions & déploiement', href: 'https://github.com/steve-community/steve', prop: false },
+            { name: 'CSMS marque blanche', href: '', prop: true },
+            { name: 'Supervision bornes & assets télécom (modem/SIM)', href: '', prop: true },
+            { name: 'Moteur de tarification / valorisation', href: '', prop: true },
+            { name: 'Intégration CRM/ERP (Odoo)', href: '', prop: true },
+          ] },
+          { num: '04', title: "Pilotage d'énergie & smart charging", tagline: 'Prévision de consommation et optimisation de la charge.', status: 'exploration', proofs: [
+            { name: 'Prévision de consommation', href: '', prop: false },
+            { name: 'Optimisation de charge', href: '', prop: false },
+          ] },
+          { num: '05', title: 'Roaming / OCPI', tagline: 'Interopérabilité et itinérance entre opérateurs.', status: '', proofs: [
             { name: 'ocpi.fyi — doc de référence', href: 'https://ocpi.fyi', prop: false },
-          ] },
-          { label: 'Paiement', proofs: [
-            { name: 'Plateforme CB Stripe + QR code', href: '', prop: true },
-            { name: "Plateforme d'abonnement eMSP", href: '', prop: true },
-          ] },
-          { label: 'Intégration SI', proofs: [
-            { name: 'Module Odoo (ERP)', href: '', prop: true },
-          ] },
-          { label: 'Open data & annuaires', proofs: [
-            { name: 'evsedb — annuaire de bornes', href: 'https://evsedb.com', prop: false },
-            { name: 'awesome-ev-charging', href: 'https://github.com/juherr/awesome-ev-charging', prop: false },
             { name: 'open-idro-directory — identifiants roaming', href: 'https://idro.juherr.dev/', prop: false },
+            { name: 'OCPI marque blanche (gateway / cache)', href: '', prop: true },
           ] },
-        ] },
-        { num: '02', title: 'Ingénierie & leadership', text: "Les deux plateformes ci-dessus sont mes builds : conception, architecture et reprise de bout en bout — du dev au CTO.", groups: [
+          { num: '06', title: "eMSP / l'usage", tagline: 'Côté conducteur et gestionnaire de flotte : payer et utiliser la charge.', status: '', proofs: [
+            { name: 'Paiement CB (Stripe) + QR code', href: '', prop: true },
+            { name: 'Site de paiement par abonnement', href: '', prop: true },
+            { name: 'Portail gestionnaire de flotte', href: '', prop: true },
+          ] },
+        ],
+      },
+      axes: [
+        { num: '02', title: 'Ingénierie & leadership', text: "La chaîne ci-dessus, c'est mon build : conception, architecture et reprise de bout en bout — du dev au CTO.", groups: [
           { label: 'Conception & architecture', proofs: [
             { name: 'Architecture des plateformes EV & des agents IA', href: '', prop: true },
             { name: 'DDD · hexagonal · event-driven', href: '', prop: false },
@@ -357,12 +379,18 @@ export const ui = {
         kicker: 'Specialities',
         title: 'Three specialities, one way of working',
         items: [
-          { title: 'E-mobility & energy', text: 'CPO and eMSP platforms, OCPP 1.6 and 2.x, OCPI and roaming, pricing, billing, monitoring, smart charging, payment and IS integration — from the charge point to the information system.', tags: ['OCPP', 'OCPI', 'Roaming', 'Smart charging'] },
+          { title: 'E-mobility & energy', text: 'CPO and eMSP platforms, OCPP 1.6 and 2.x, OCPI and roaming, pricing, billing, monitoring, payment and IS integration — I master the whole chain, from the charge point to the usage.', tags: ['OCPP', 'OCPI', 'Roaming', 'CPO / eMSP'] },
           { title: 'Engineering & leadership', text: 'From dev to CTO, via tech lead. Architecture (DDD, hexagonal, event-driven), legacy recovery, team structuring — and direct contribution on critical code.', tags: ['Dev to CTO', 'DDD', 'Hexagonal', 'Legacy'] },
           { title: 'Accelerate delivery with AI', text: "I use agentic AI to ship faster with smaller teams, without sacrificing quality — dev agents, framing, documentation and automation. A delivery multiplier, not a separate activity.", tags: ['Agents', 'Delivery', 'Use cases', 'Teams'] },
         ],
         techTitle: 'Technologies',
         techs: ['Java', 'Kotlin', 'Spring Boot', 'TypeScript', 'PHP', 'NestJS', 'Nuxt', 'PostgreSQL', 'MongoDB', 'Docker', 'Cloudflare', 'GitHub Actions'],
+      },
+      chainTeaser: {
+        kicker: 'EV-charging value chain',
+        title: 'From the charge point to the driver',
+        text: 'I master every link in the charging chain: the charge point, the OCPP/OCPI protocols, CPO monitoring, roaming and eMSP-side usage — with proof.',
+        link: 'See the full chain',
       },
       proj: {
         kicker: 'Featured projects',
@@ -408,33 +436,49 @@ export const ui = {
     expertise: {
       kicker: 'Expertise',
       title: 'Three specialities, one cross-cutting skill',
-      intro: 'I never approach technology for its own sake: every architectural choice serves a business problem, an operational constraint or a reliability concern. Product & architecture is the through-line that ties my three specialities together.',
+      intro: 'I never approach technology for its own sake: every architectural choice serves a business problem, an operational constraint or a reliability concern. First speciality: mastery of the whole EV-charging chain, from the charge point to the usage. Product & architecture is the through-line that ties my three specialities together.',
       note: 'Technologies remain secondary to the business problems they solve.',
-      axes: [
-        { num: '01', title: 'E-mobility & energy', text: "From the charge point to the information system: I've built every link in the CPO/eMSP chain.", groups: [
-          { label: 'Monitoring & OCPP', proofs: [
-            { name: 'Charge-point & telecom-asset monitoring (modem/SIM)', href: '', prop: true },
-            { name: 'SteVe — contributions & deployment', href: 'https://github.com/steve-community/steve', prop: false },
+      chain: {
+        num: '01',
+        title: 'E-mobility & energy',
+        tagline: "From the charge point to the usage: I've built every link in the EV-charging chain, in production.",
+        links: [
+          { num: '01', title: 'The charge point', tagline: 'Equipment registry, simulation and hardware monitoring.', status: '', proofs: [
+            { name: 'evsedb — EVSE registry', href: 'https://evsedb.com', prop: false },
+            { name: 'ocpp-cp-simulator', href: 'https://github.com/shiv3/ocpp-cp-simulator', prop: false },
+            { name: 'awesome-ev-charging', href: 'https://github.com/juherr/awesome-ev-charging', prop: false },
+          ] },
+          { num: '02', title: 'Protocols (OCPP & OCPI)', tagline: 'I speak and tool the very protocols that hold the chain together.', status: '', proofs: [
+            { name: 'OCPP 1.6 / 2.x', href: '', prop: false },
+            { name: 'ocpp-toolkit', href: 'https://github.com/izivia/ocpp-toolkit', prop: false },
+            { name: 'ocpi-toolkit', href: 'https://github.com/izivia/ocpi-toolkit', prop: false },
             { name: 'ocpp-gateway', href: 'https://github.com/juherr/ocpp-gateway', prop: false },
           ] },
-          { label: 'Roaming & OCPI', proofs: [
-            { name: 'OCPI gateway / cache server', href: '', prop: true },
+          { num: '03', title: 'Monitoring / CPO (CSMS)', tagline: 'Operate, monitor, price and bill a fleet of charge points.', status: '', proofs: [
+            { name: 'SteVe — contributions & deployment', href: 'https://github.com/steve-community/steve', prop: false },
+            { name: 'White-label CSMS', href: '', prop: true },
+            { name: 'Charge-point & telecom-asset monitoring (modem/SIM)', href: '', prop: true },
+            { name: 'Pricing / valorisation engine', href: '', prop: true },
+            { name: 'CRM/ERP integration (Odoo)', href: '', prop: true },
+          ] },
+          { num: '04', title: 'Energy management & smart charging', tagline: 'Consumption forecasting and charge optimisation.', status: 'exploration', proofs: [
+            { name: 'Consumption forecasting', href: '', prop: false },
+            { name: 'Charge optimisation', href: '', prop: false },
+          ] },
+          { num: '05', title: 'Roaming / OCPI', tagline: 'Interoperability and roaming between operators.', status: '', proofs: [
             { name: 'ocpi.fyi — reference docs', href: 'https://ocpi.fyi', prop: false },
-          ] },
-          { label: 'Payment', proofs: [
-            { name: 'Card platform (Stripe) + QR code', href: '', prop: true },
-            { name: 'eMSP subscription platform', href: '', prop: true },
-          ] },
-          { label: 'IS integration', proofs: [
-            { name: 'Odoo module (ERP)', href: '', prop: true },
-          ] },
-          { label: 'Open data & directories', proofs: [
-            { name: 'evsedb — charge-point registry', href: 'https://evsedb.com', prop: false },
-            { name: 'awesome-ev-charging', href: 'https://github.com/juherr/awesome-ev-charging', prop: false },
             { name: 'open-idro-directory — roaming IDs', href: 'https://idro.juherr.dev/', prop: false },
+            { name: 'White-label OCPI (gateway / cache)', href: '', prop: true },
           ] },
-        ] },
-        { num: '02', title: 'Engineering & leadership', text: 'The two platforms above are my builds: design, architecture and recovery end to end — from dev to CTO.', groups: [
+          { num: '06', title: 'eMSP / the usage', tagline: 'Driver and fleet-manager side: pay for and use the charge.', status: '', proofs: [
+            { name: 'Card payment (Stripe) + QR code', href: '', prop: true },
+            { name: 'Subscription payment site', href: '', prop: true },
+            { name: 'Fleet-manager portal', href: '', prop: true },
+          ] },
+        ],
+      },
+      axes: [
+        { num: '02', title: 'Engineering & leadership', text: 'The chain above is my build: design, architecture and recovery end to end — from dev to CTO.', groups: [
           { label: 'Design & architecture', proofs: [
             { name: 'Architecture of the EV platforms & AI agents', href: '', prop: true },
             { name: 'DDD · hexagonal · event-driven', href: '', prop: false },

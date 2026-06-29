@@ -19,6 +19,7 @@ const experience = await getExperience(lang);
 const contactHref = localizePath('contact', lang);
 const projetsHref = localizePath('projets', lang);
 const parcoursHref = localizePath('parcours', lang);
+const expertiseHref = localizePath('expertise', lang);
 const visitLabel = lang === 'fr' ? 'Voir le projet' : 'Visit the project';
 
 const kicker = 'font-mono text-[12px] uppercase tracking-[0.14em] text-accent';
@@ -91,6 +92,16 @@ const chip = 'rounded-md border border-border bg-surface-2 px-[9px] py-1 font-mo
       <span class="font-mono text-[12px] uppercase tracking-[0.14em] text-muted">{h.exp.techTitle}</span>
       {h.exp.techs.map((tech) => <span class={chip}>{tech}</span>)}
     </div>
+  </div>
+</section>
+
+<!-- CHAÎNE DE VALEUR (teaser) -->
+<section class="border-t border-border">
+  <div class="mx-auto max-w-site px-8 py-[clamp(56px,7vw,88px)]">
+    <div class={`mb-3 ${kicker}`}>{h.chainTeaser.kicker}</div>
+    <h2 class={`m-0 mb-4 ${sectionTitle}`}>{h.chainTeaser.title}</h2>
+    <p class="m-0 mb-7 max-w-[640px] text-[15px] leading-[1.6] text-muted [text-wrap:pretty]">{h.chainTeaser.text}</p>
+    <a href={expertiseHref} class="border-b border-blue pb-[2px] text-[15px] font-semibold text-blue no-underline">{h.chainTeaser.link} →</a>
   </div>
 </section>
 

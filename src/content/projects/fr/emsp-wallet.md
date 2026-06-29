@@ -1,7 +1,7 @@
 ---
 title: "Portail eMSP & wallet"
 domain: "eMSP · Wallet"
-summary: "Comptes, badges, historique de charge, wallet, crédits, abonnements, facturation, paiement Stripe et intégration OCPI."
+summary: "Comptes, badges, historique de charge, wallet, crédits, abonnements, facturation, paiement par carte (Stripe) et QR code, et intégration OCPI."
 role: "Conception & delivery"
 impact: "Paiement & wallet"
 techs: ["Nuxt", "NestJS", "OCPI", "Stripe"]
@@ -14,5 +14,5 @@ impactDetail: "Une expérience de paiement et de wallet fluide pour les conducte
 ---
 
 Portail eMSP côté conducteur : comptes, badges, historique de charge, wallet,
-crédits, abonnements et facturation. Le paiement s'appuie sur Stripe et le roaming
-sur une intégration OCPI.
+crédits, abonnements et facturation. Le paiement s'appuie sur la carte bancaire
+(Stripe) et le QR code, le roaming sur une intégration OCPI.

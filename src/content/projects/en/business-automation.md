@@ -1,10 +1,10 @@
 ---
 title: "Business process automation"
 domain: "Business · ERP"
-summary: "Beyond EV charging: ERP, billing, support, operations, data synchronisation and reduction of manual tasks."
+summary: "Beyond EV charging: ERP (Odoo), billing, support, operations, data synchronisation and reduction of manual tasks."
 role: "Architect & integrator"
 impact: "Less manual work"
-techs: ["Java", "SQL", "Integration"]
+techs: ["Java", "Odoo", "SQL", "Integration"]
 featured: false
 order: 6
 lang: "en"

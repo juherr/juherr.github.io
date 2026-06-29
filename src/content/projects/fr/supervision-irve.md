@@ -1,10 +1,10 @@
 ---
 title: "Plateforme de supervision IRVE"
 domain: "IRVE · CSMS"
-summary: "CSMS exploité en production sur plusieurs centaines de bornes : OCPP, supervision, gestion d'équipements, tarification, facturation et intégration au SI."
+summary: "CSMS exploité en production sur plusieurs centaines de bornes : OCPP, supervision, gestion d'équipements, valorisation de la charge, facturation et intégration au SI — disponible en marque blanche."
 role: "Architecte & lead technique"
 impact: "×100s bornes"
-techs: ["Kotlin", "Spring Boot", "OCPP 1.6 / 2.x", "PostgreSQL", "Docker", "Cloudflare"]
+techs: ["Kotlin", "Spring Boot", "OCPP 1.6 / 2.x", "PostgreSQL", "Odoo", "Docker", "Cloudflare"]
 featured: true
 order: 1
 lang: "fr"
@@ -40,3 +40,6 @@ Le cœur du système gère la connectivité OCPP des bornes, la supervision temp
 du parc et un moteur de tarification capable de couvrir des cas métier complexes.
 La facturation et l'intégration au SI ferment la boucle, de la session de charge
 jusqu'à l'écriture comptable.
+
+La plateforme est disponible en **marque blanche**, avec moteur de valorisation de la
+charge et intégration CRM/ERP (Odoo). Captures d'écran disponibles sur demande.

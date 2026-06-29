@@ -1,7 +1,7 @@
 ---
 title: "eMSP portal & wallet"
 domain: "eMSP · Wallet"
-summary: "Accounts, badges, charging history, wallet, credits, subscriptions, billing, Stripe payment and OCPI integration."
+summary: "Accounts, badges, charging history, wallet, credits, subscriptions, billing, card (Stripe) and QR-code payment, and OCPI integration."
 role: "Design & delivery"
 impact: "Payment & wallet"
 techs: ["Nuxt", "NestJS", "OCPI", "Stripe"]
@@ -14,5 +14,5 @@ impactDetail: "A smooth payment and wallet experience for drivers, on a maintain
 ---
 
 Driver-facing eMSP portal: accounts, badges, charging history, wallet, credits,
-subscriptions and billing. Payment is powered by Stripe and roaming by an OCPI
-integration.
+subscriptions and billing. Payment is powered by card (Stripe) and QR code, and
+roaming by an OCPI integration.

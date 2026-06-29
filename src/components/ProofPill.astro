@@ -1,0 +1,29 @@
+---
+// A single proof "pill": an external link, or a neutral span with an optional
+// badge for confidential / on-request proofs. Shared by the chain and the axes
+// in Expertise.astro so the markup and styling stay single-sourced.
+interface Props {
+  proof: { name: string; href: string; prop: boolean };
+  /** Badge text shown for a proprietary proof without a public link. */
+  label: string;
+}
+const { proof, label } = Astro.props;
+---
+
+{proof.href ? (
+  <a
+    href={proof.href}
+    target="_blank"
+    rel="noopener"
+    class="inline-flex items-center gap-[6px] rounded-[7px] border border-blue-soft bg-blue-soft px-3 py-[7px] font-mono text-[12.5px] text-blue no-underline transition-colors hover:border-blue"
+  >
+    {proof.name}<span aria-hidden="true">↗</span>
+  </a>
+) : (
+  <span class="inline-flex items-center gap-[7px] rounded-[7px] border border-border bg-surface-2 px-3 py-[7px] font-mono text-[12.5px] text-ink">
+    {proof.name}
+    {proof.prop && (
+      <span class="rounded-[4px] bg-border px-[5px] py-[1px] text-[10px] uppercase tracking-[0.06em] text-muted">{label}</span>
+    )}
+  </span>
+)}
